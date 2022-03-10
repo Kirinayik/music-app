@@ -1,12 +1,12 @@
-import {Page} from "../frontend/styles/global";
 import {NextPage} from "next";
 import ErrorContainer from "../frontend/components/assets/ErrorContainer";
+import {Box} from "@mui/material";
 
 const Custom404:NextPage = () => {
   return (
-    <Page>
+    <Box>
       <ErrorContainer code={'404'} message={'Page not found'}/>
-    </Page>
+    </Box>
   )
 }
 

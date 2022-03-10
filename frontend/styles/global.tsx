@@ -54,5 +54,5 @@ export const LoginPage = styled.div`
 `
 
 export const Page = styled.div`
-  padding-left: 70px;
+  padding: 90px 30px 40px;
 `

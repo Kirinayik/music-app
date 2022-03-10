@@ -1,3 +1,5 @@
+import {store} from "../frontend/store";
+
 export type ItemPlayProps = {
   isPlay?: boolean;
 }
@@ -22,3 +24,6 @@ export type ILogin = {
   username: string;
   password: string;
 }
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

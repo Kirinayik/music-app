@@ -1,12 +1,13 @@
 import {GetServerSideProps, NextPage} from "next";
-import {getSession, signIn} from "next-auth/react";
+import {getSession} from "next-auth/react";
 import {Box, Button} from "@mui/material";
 import Logo from '../public/img/logo.png';
 import Image from 'next/image';
 import {LoginPage} from "../frontend/styles/global";
+import {useAuth} from "../frontend/hooks/useAuth";
 
 const Login: NextPage = () => {
-  const handleSignIn = () => signIn('spotify')
+  const {handleSignIn} = useAuth()
 
   return (
       <LoginPage>

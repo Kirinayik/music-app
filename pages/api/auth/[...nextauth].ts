@@ -15,11 +15,10 @@ export default NextAuth({
       }
       return token;
     },
-    async session(session:any, user:any) {
-      session.user = user;
-
-      return session;
-    },
+    async session({ session, token }) {
+      session.accessToken = token.accessToken
+      return session
+    }
   },
   pages: {
     signIn: '/auth/login',

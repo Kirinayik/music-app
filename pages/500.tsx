@@ -1,12 +1,12 @@
-import {Page} from "../frontend/styles/global";
 import {NextPage} from "next";
 import ErrorContainer from "../frontend/components/assets/ErrorContainer";
+import {Box} from "@mui/material";
 
 const Custom500:NextPage = () => {
   return (
-    <Page>
+    <Box>
       <ErrorContainer code={'500'} message={'Something went wrong'}/>
-    </Page>
+    </Box>
   )
 }
 

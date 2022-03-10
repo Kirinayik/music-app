@@ -1,8 +1,11 @@
 import {GetServerSideProps, NextPage} from "next";
 import {getSession} from "next-auth/react";
 import {Page} from "../frontend/styles/global";
+import {useHistory} from "../frontend/hooks/useHistory";
 
 const Search:NextPage = () => {
+  useHistory()
+
   return (
     <Page>
       search page

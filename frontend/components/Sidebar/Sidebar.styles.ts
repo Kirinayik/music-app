@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import {IconButton} from "@mui/material";
 
 type IconContainerProps = {
-  isActive: boolean;
+  active: string;
 }
 
 export const SidebarContainer = styled.div`
@@ -18,7 +18,7 @@ export const IconContainer = styled(IconButton)<IconContainerProps>`
   color: #fff;
   padding: 20px;
   cursor: pointer;
-  opacity: ${props => props.isActive ? '1' : '0.5'};
+  opacity: ${props => props.active === 'true' ? '1' : '0.5'};
   transition: 0.2s opacity ease-in-out;
 
   & > svg {

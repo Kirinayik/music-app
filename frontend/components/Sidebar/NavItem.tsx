@@ -14,7 +14,7 @@ const NavItem:FC<NavItemProps> = ({path}) => {
   
   return (
     <Link href={path}>
-      <IconContainer isActive={pathname === path} disableRipple>
+      <IconContainer active={`${pathname === path}`} disableRipple>
         <NavIcon path={path}/>
       </IconContainer>
     </Link>
