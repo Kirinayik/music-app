@@ -17,13 +17,13 @@ const HistoryButton:FC<HistoryButtonProps> = ({type}) => {
   switch (type) {
     case 'prev':
       return (
-        <NavigationButton disabled={prev < 2} disableRipple onClick={ handlePrevPage}>
+        <NavigationButton sx={{marginRight: '20px'}} disabled={prev < 2} disableRipple onClick={ handlePrevPage}>
           <ArrowBackIosNewIcon/>
         </NavigationButton>
       )
     case 'next':
       return (
-        <NavigationButton disabled={!(!!next)} disableRipple onClick={ handleNextPage}>
+        <NavigationButton sx={{display: {xs:'none', tiny:'inline-flex'}}} disabled={!(!!next)} disableRipple onClick={ handleNextPage}>
           <ArrowForwardIosIcon/>
         </NavigationButton>
       )

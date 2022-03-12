@@ -3,8 +3,8 @@ import {getSession} from "next-auth/react";
 import {Box, Button} from "@mui/material";
 import Logo from '../public/img/logo.png';
 import Image from 'next/image';
-import {LoginPage} from "../frontend/styles/global";
-import {useAuth} from "../frontend/hooks/useAuth";
+import {LoginPage} from "../styles/global";
+import {useAuth} from "../hooks/useAuth";
 
 const Login: NextPage = () => {
   const {handleSignIn} = useAuth()

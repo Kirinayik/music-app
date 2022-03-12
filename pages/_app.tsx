@@ -1,13 +1,13 @@
 import type {AppProps} from 'next/app'
-import {GlobalStyles} from "../frontend/styles/global";
-import {emotionTheme, muiTheme} from "../frontend/styles/theme";
+import {emotionTheme, muiTheme} from "../styles/theme";
 import Head from 'next/head'
 import {SessionProvider} from "next-auth/react"
 import {Provider as ReduxProvider} from 'react-redux';
 import {ThemeProvider as EmotionProvider} from "@emotion/react";
 import {ThemeProvider as MuiProvider} from "@mui/material";
-import Layout from "../frontend/components/Layout/Layout";
-import {store} from "../frontend/store";
+import Layout from "../components/Layout/Layout";
+import {store} from "../store";
+import {GlobalStyles} from "../styles/global";
 
 function MyApp({ Component, pageProps: {session, ...pageProps} }: AppProps) {
   return (

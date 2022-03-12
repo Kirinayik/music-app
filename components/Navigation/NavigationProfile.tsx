@@ -5,6 +5,7 @@ import {MouseEvent, useState} from "react";
 import {useAuth} from "../../hooks/useAuth";
 import {useNavigate} from "../../hooks/useNavigate";
 import LogoutIcon from '@mui/icons-material/Logout';
+import {formatName} from "../../helpers/formatName";
 
 const NavigationProfile = () => {
   const {handleToProfile} = useNavigate();
@@ -26,10 +27,14 @@ const NavigationProfile = () => {
   return (
     <>
       <NavigationProfileContainer isActive={open} onClick={handleClick}>
-        <Avatar sx={{ width: 25, height: 25 }} alt="user" src={data?.user?.image} />
-        <Box padding={'0 10px'}>{data?.user?.name}</Box>
+        {data?.user?.image ? (
+          <Avatar sx={{ width: 25, height: 25 }} alt="user" src={data.user.image} />
+        ) : (
+          <Avatar src={undefined} sx={{ width: 25, height: 25 }} alt="user"/>
+        )}
+        <Box padding={'0 10px'}>{formatName(data?.user?.name, 15)}</Box>
       </NavigationProfileContainer>
-      <ProfileMenu open={open} onClose={handleClose} anchorEl={anchorEl}>
+      <ProfileMenu open={open} onClose={handleClose} anchorEl={anchorEl} disableScrollLock>
         <Box>
           <MenuItem onClick={handleLinkProfile}>
             Profile

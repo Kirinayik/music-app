@@ -6,7 +6,7 @@ import NavigationProfile from "./NavigationProfile";
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack color={'#fff'} direction={'row'} spacing={3}>
+      <Stack color={'#fff'} direction={'row'}>
         <HistoryButton type={'prev'}/>
         <HistoryButton type={'next'}/>
       </Stack>

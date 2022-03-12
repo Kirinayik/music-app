@@ -1,15 +1,15 @@
 import {GetServerSideProps, NextPage} from "next";
 import {getSession} from "next-auth/react";
-import {Page} from "../frontend/styles/global";
-import {useHistory} from "../frontend/hooks/useHistory";
+import {useHistory} from "../hooks/useHistory";
+import {Box} from "@mui/material";
 
 const Search:NextPage = () => {
   useHistory()
 
   return (
-    <Page>
+    <Box>
       search page
-    </Page>
+    </Box>
   );
 };
 

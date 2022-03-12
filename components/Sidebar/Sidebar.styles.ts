@@ -6,12 +6,20 @@ type IconContainerProps = {
 }
 
 export const SidebarContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
+  height: 100vh;
   z-index: 10;
   background-color: ${props => props.theme.colors.black};
+  
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    height: auto;
+    top: 100%;
+    transform: translateY(-100%);
+    z-index: 1000;
+  }
 `
 
 export const IconContainer = styled(IconButton)<IconContainerProps>`

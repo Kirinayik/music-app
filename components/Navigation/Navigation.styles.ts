@@ -10,16 +10,21 @@ export const NavigationContainer = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 20;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-height: 70px;
+  
+  @media screen and (max-width: 700px) {
+    padding: 15px 30px 15px 30px;
+  }
 `
 
 export const NavigationButton = styled(IconButton)`
   color: inherit;
-  background-color: ${props => props.theme.colors.black};
+  background-color: ${({theme}) => theme.colors.black};
   height: 35px;
   width: 35px;
   cursor: pointer;
@@ -30,7 +35,7 @@ export const NavigationButton = styled(IconButton)`
   
   &:disabled {
     color: inherit;
-    background-color: ${props => props.theme.colors.black};
+    background-color: ${({theme}) => theme.colors.black};
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: all;
@@ -41,18 +46,19 @@ export const NavigationProfileContainer = styled.div<NavigationProfileContainerP
   padding: 5px;
   display: flex;
   align-items: center;
-  background-color: ${props => props.isActive ? '#2e2e2e' : props.theme.colors.black};
+  background-color: ${(props) => props.isActive ? '#2e2e2e' : props.theme.colors.black};
   border-radius: 20px;
   cursor: pointer;
   transition: 0.1s background ease-in-out;
   
   &:hover {
-    background-color: #2e2e2e;
+    background-color: ${props => props.theme.colors['black-hover']};
   }
 `
 
 export const ProfileMenu = styled(Menu)`
   & .MuiPaper-root {
+    overflow: visible;
     margin-top: 10px;
     min-width: 200px;
     border-radius: 0;

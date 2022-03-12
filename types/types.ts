@@ -1,28 +1,23 @@
-import {store} from "../frontend/store";
+import {store} from "../store";
+import "@emotion/react";
 
-export type ItemPlayProps = {
-  isPlay?: boolean;
+declare module "@emotion/react" {
+  export interface Theme {
+    colors: {
+      black: string;
+      'black-hover': string;
+      green: string;
+      white: string;
+      grey: string;
+    };
+  }
 }
 
-export interface IUser {
-  username: string | null | undefined;
-  email: string | null | undefined;
-  image: string | null | undefined;
-}
-
-export type UserResponse = {
-  name?: string | null | undefined;
-  email?: string | null | undefined;
-  image?: string | null | undefined;
-} | undefined
-
-export type IProgress = {
-  isLoading: boolean;
-}
-
-export type ILogin = {
-  username: string;
-  password: string;
+declare module "@mui/material" {
+  interface BreakpointOverrides {
+    tiny: true;
+    big: true;
+  }
 }
 
 export type RootState = ReturnType<typeof store.getState>

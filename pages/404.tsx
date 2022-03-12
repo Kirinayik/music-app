@@ -1,6 +1,6 @@
 import {NextPage} from "next";
-import ErrorContainer from "../frontend/components/assets/ErrorContainer";
 import {Box} from "@mui/material";
+import ErrorContainer from "../components/assets/ErrorContainer";
 
 const Custom404:NextPage = () => {
   return (

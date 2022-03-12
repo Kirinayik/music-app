@@ -3,6 +3,7 @@ import {createTheme} from "@mui/material";
 export const emotionTheme = {
   colors: {
     black: '#070707',
+    'black-hover': '#373737',
     green: '#0DB145',
     white: '#ffffff',
     grey: '#ABABAB',
@@ -17,6 +18,17 @@ export const emotionTheme = {
 }
 
 export const muiTheme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      tiny: 510,
+      sm: 700,
+      md: 900,
+      big: 1100,
+      lg: 1300,
+      xl: 1536,
+    },
+  },
   components: {
     MuiContainer: {
       defaultProps: {
@@ -43,7 +55,7 @@ export const muiTheme = createTheme({
       defaultProps: {
         fontFamily: 'inherit'
       }
-    }
+    },
   }
 })
 

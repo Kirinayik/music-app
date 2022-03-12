@@ -1,15 +1,28 @@
-import {Page} from "../frontend/styles/global";
-import {useHistory} from "../frontend/hooks/useHistory";
-import {GetServerSideProps} from "next";
+import {useHistory} from "../hooks/useHistory";
+import {GetServerSideProps, NextPage} from "next";
 import {getSession} from "next-auth/react";
+import {Box} from "@mui/material";
+import User from "../components/User/User";
+import TopArtists from "../components/Top/TopArtists";
+import Spotify from "../controllers/spotify";
+import TopTracks from "../components/Top/TopTracks";
+import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
+import TrackObjectFull = SpotifyApi.TrackObjectFull;
 
-const Profile = () => {
+type ProfileProps = {
+  artists: ArtistObjectFull[];
+  tracks: TrackObjectFull[];
+}
+
+const Profile:NextPage<ProfileProps> = ({artists, tracks}) => {
   useHistory()
 
   return (
-    <Page>
-      Profile page
-    </Page>
+    <Box>
+      <User/>
+      <TopArtists artists={artists}/>
+      <TopTracks tracks={tracks}/>
+    </Box>
   );
 };
 
@@ -26,7 +39,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   }
+
+  const artists = await Spotify.getTopItems(context.req, 'artists', 6);
+  const tracks = await Spotify.getTopItems(context.req, 'tracks', 4);
+
   return {
-    props: { session },
+    props: { session, artists, tracks },
   };
 }

@@ -38,8 +38,17 @@ export const GlobalStyles = () => (
       }
       
       a {
+      cursor: pointer;
       color: inherit;
       text-decoration: none;
+      
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      
+      h1,h2,h3,h4,h5,h6 {
+      margin: 0;
       }
     `}
   />
@@ -53,6 +62,13 @@ export const LoginPage = styled.div`
   background-color: #070707;
 `
 
-export const Page = styled.div`
-  padding: 90px 30px 40px;
+export const Title = styled.h3`
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 35px;
+  
+  @media screen and (max-width: 510px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
 `
