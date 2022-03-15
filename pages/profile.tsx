@@ -20,8 +20,8 @@ const Profile:NextPage<ProfileProps> = ({artists, tracks}) => {
   return (
     <Box>
       <User/>
-      <TopArtists artists={artists}/>
-      <TopTracks tracks={tracks}/>
+      {artists.length > 0 && <TopArtists artists={artists}/>}
+      {tracks.length > 0 && <TopTracks tracks={tracks}/>}
     </Box>
   );
 };

@@ -13,7 +13,7 @@ export const NavIcon:FC<NavIconProps> = ({path}) => {
       return <HomeIcon/>
     case '/search':
       return <SearchIcon/>
-    case '/library':
+    case '/library/playlists':
       return <LibraryMusicIcon/>
     default:
       return null 

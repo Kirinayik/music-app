@@ -1,5 +1,5 @@
 import type {GetServerSideProps, NextPage} from 'next'
-import {getSession} from "next-auth/react";
+import {getSession, useSession} from "next-auth/react";
 import {useHistory} from "../hooks/useHistory";
 import {Box} from "@mui/material";
 

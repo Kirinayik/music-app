@@ -32,7 +32,9 @@ const NavigationProfile = () => {
         ) : (
           <Avatar src={undefined} sx={{ width: 25, height: 25 }} alt="user"/>
         )}
-        <Box padding={'0 10px'}>{formatName(data?.user?.name, 15)}</Box>
+        <Box display={{xs: 'none', sm: 'block'}} padding={'0 10px'}>
+          {formatName(data?.user?.name, 15)}
+        </Box>
       </NavigationProfileContainer>
       <ProfileMenu open={open} onClose={handleClose} anchorEl={anchorEl} disableScrollLock>
         <Box>

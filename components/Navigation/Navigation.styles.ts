@@ -5,7 +5,12 @@ type NavigationProfileContainerProps = {
   isActive: boolean;
 }
 
+type NavigationItemProps = {
+  isActive: boolean;
+}
+
 export const NavigationContainer = styled.nav`
+  height: 70px;
   padding: 15px 30px 15px calc(70px + 30px);
   position: fixed;
   top: 0;
@@ -15,10 +20,13 @@ export const NavigationContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-height: 70px;
   
   @media screen and (max-width: 700px) {
-    padding: 15px 30px 15px 30px;
+    padding: 15px 30px;
+  }
+
+  @media screen and (max-width: 510px) {
+    padding: 15px;
   }
 `
 
@@ -79,5 +87,19 @@ export const ProfileMenu = styled(Menu)`
     &:hover {
       background-color: #484848;
     }
+  }
+`
+
+export const NavigationItem = styled.a<NavigationItemProps>`
+  padding: 10px 15px;
+  display: inline-block;
+  width: 90px;
+  background: ${props => props.isActive ? props.theme.colors['black-hover'] : 'transparer'};
+  text-align: center;
+  transition: 0.1s background ease-in-out;
+  
+  &:hover {
+    background: ${props => props.theme.colors['black-hover']};
+    text-decoration: none;
   }
 `
