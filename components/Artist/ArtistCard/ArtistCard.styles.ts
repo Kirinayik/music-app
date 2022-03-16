@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const CardContainer = styled.div`
+export const ArtistCardContainer = styled.div`
   cursor: pointer;
   background: rgb(38,38,38);
   display: flex;

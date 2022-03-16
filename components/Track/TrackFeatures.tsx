@@ -1,6 +1,5 @@
 import {Box, IconButton} from "@mui/material";
 import {FeaturesContainer, TrackArtist, TrackFeaturesContainer} from "./Track.styles";
-import {formatName} from "../../helpers/formatName";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {FC} from "react";
 
@@ -10,10 +9,9 @@ type TrackFeaturesProps = {
 
 const TrackFeatures:FC<TrackFeaturesProps> = ({album}) => {
   return (
-    <TrackFeaturesContainer justifyContent={{xs:'flex-end',sm:'space-between'}}
-      flexBasis={{xs:'20%',sm: '60%', md: '50%', big: '40%'}}>
-      <Box display={{xs: 'none', sm: 'block'}}>
-        <TrackArtist>{formatName(album, 33)}</TrackArtist>
+    <TrackFeaturesContainer justifyContent={{xs:'flex-end',md:'space-between'}}>
+      <Box display={{xs: 'none', md: 'block'}}>
+        <TrackArtist>{album}</TrackArtist>
       </Box>
       <FeaturesContainer width={{xs:'auto', tiny: '100px'}}>
         <IconButton disableRipple color={'inherit'} sx={{marginRight: {xs:'0', tiny:'15px'}}}>

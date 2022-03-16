@@ -15,6 +15,23 @@ export const GlobalStyles = () => (
         text-rendering: optimizeLegibility;
       }
       
+      ::-webkit-scrollbar {
+        width: 15px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,.3);
+        min-height: 30px;
+        
+        &:hover {
+          background: rgba(255,255,255,.5);
+        }
+      }
+      
       *,
       *::before,
       *::after {

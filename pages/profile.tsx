@@ -1,4 +1,3 @@
-import {useHistory} from "../hooks/useHistory";
 import {GetServerSideProps, NextPage} from "next";
 import {getSession} from "next-auth/react";
 import {Box} from "@mui/material";
@@ -15,11 +14,9 @@ type ProfileProps = {
 }
 
 const Profile:NextPage<ProfileProps> = ({artists, tracks}) => {
-  useHistory()
-
   return (
     <Box>
-      <User/>
+      <User type={'profile'}/>
       {artists.length > 0 && <TopArtists artists={artists}/>}
       {tracks.length > 0 && <TopTracks tracks={tracks}/>}
     </Box>

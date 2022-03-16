@@ -1,9 +1,8 @@
 import {GetServerSideProps, NextPage} from "next";
 import {getSession} from "next-auth/react";
-import {useHistory} from "../../hooks/useHistory";
 import {Box, Grid, Typography} from "@mui/material";
 import Spotify from "../../controllers/spotify";
-import Card from "../../components/Card/Card";
+import ArtistCard from "../../components/Artist/ArtistCard/ArtistCard";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 
 type ArtistsProps = {
@@ -11,8 +10,6 @@ type ArtistsProps = {
 }
 
 const Artists:NextPage<ArtistsProps> = ({artists}) => {
-  useHistory()
-
   return (
     <Box padding={{xs: '90px 15px 40px', sm: '90px 30px 40px'}}>
       <Box marginBottom={'30px'}>
@@ -23,7 +20,7 @@ const Artists:NextPage<ArtistsProps> = ({artists}) => {
       {artists.length > 0 ? (
         <Grid container spacing={3} columns={{xs: 2, tiny: 4, sm: 6, big: 8, lg: 12}}>
           {artists.map((artist) => (
-            <Card artist={artist} key={artist.id}/>
+            <ArtistCard artist={artist} key={artist.id}/>
           ))}
         </Grid>
       ) : (

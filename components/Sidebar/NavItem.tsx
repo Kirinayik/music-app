@@ -12,7 +12,7 @@ type NavItemProps = {
 const NavItem:FC<NavItemProps> = ({path, isActive}) => {
 
   return (
-    <Link href={path}>
+    <Link href={path} passHref>
       <IconContainer active={`${isActive}`} disableRipple>
         <NavIcon path={path}/>
       </IconContainer>

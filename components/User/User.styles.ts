@@ -18,6 +18,10 @@ export const UserNameStyles = {
     tiny: '50px',
     sm: '68px',
     md: '96px'
+  },
+  textAlign: {
+    xs: 'center',
+    tiny: 'left'
   }
 }
 
@@ -37,5 +41,5 @@ export const UserName = styled(Typography)`
   line-height: 1;
   font-weight: inherit;
   letter-spacing: 0;
-  word-break: break-all;
+  word-break: break-word;
 `

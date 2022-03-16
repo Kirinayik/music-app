@@ -22,7 +22,7 @@ const Layout:FC<LayoutProps> = ({ children }) => {
     router.events.on("routeChangeComplete", () => {
       setLoading(false);
     });
-  }, [])
+  })
 
   return (
     <>

@@ -1,11 +1,9 @@
 import styled from "@emotion/styled";
-import {Box} from "@mui/material";
+import {Box, Grid} from "@mui/material";
 
-export const TrackContainer = styled(Box)`
+export const TrackContainer = styled(Grid)`
   position: relative;
-  display: flex;
-  align-items: center;
-  height: 60px;
+  height: 70px;
   width: 100%;
   background: transparent;
   border-radius: 8px;
@@ -36,25 +34,36 @@ export const TrackPlayContainer = styled.div`
   right: 5px;
   color: ${props => props.theme.colors.white};
   
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 699px) {
     display: none;
   }
-`
-
-export const TrackArtist = styled.a`
-  font-size: 13px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.7);
 `
 
 export const TrackFeaturesContainer = styled(Box)`
   display: flex;
   align-items: center;
+  padding: 0 10px;
+  overflow: hidden;
+  height: 100%;
 `
 
 export const FeaturesContainer = styled(Box)`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   color: ${props => props.theme.colors.green};
+`
+
+export const TrackName = styled.div`
+  font-weight: 600;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`
+
+export const TrackArtist = styled.a`
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
 `

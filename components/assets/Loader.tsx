@@ -5,7 +5,7 @@ const Loader = () => {
   const theme = useTheme()
 
   return (
-    <Box position={'absolute'} top={'0'} left={'0'} color={theme.colors.green} width={'100%'}>
+    <Box position={'fixed'} top={'0'} left={'0'} zIndex={1301} color={theme.colors.green} width={'100%'}>
       <LinearProgress color="inherit" />
     </Box>
   );

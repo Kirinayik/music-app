@@ -59,6 +59,30 @@ class SpotifyService {
 
     return data
   }
+
+  async getArtist(token: string, id: string | string[] | undefined) {
+    const {access_token} = await this.getAccessToken(token);
+    const {data} = await axios.get(`https://api.spotify.com/v1/artists/${id}`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        'Content-Type': 'application/json'
+      },
+    })
+
+    return data
+  }
+
+  async getTopArtistTracks(token: string, id: string | string[] | undefined) {
+    const {access_token} = await this.getAccessToken(token);
+    const {data} = await axios.get(`https://api.spotify.com/v1/artists/${id}/top-tracks?market=US`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        'Content-Type': 'application/json'
+      },
+    })
+
+    return data
+  }
 }
 
 export default new SpotifyService();

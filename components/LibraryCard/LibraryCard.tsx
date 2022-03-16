@@ -15,7 +15,7 @@ const LibraryCard:FC<LibraryCardProps> = ({playlist:{name, images, description}}
       <LibraryCardContainer>
         <Box display={'flex'} alignItems={'flex-start'} sx={{'& img': {borderRadius: '8px'}}}>
           <Box sx={{flexBasis: '40%'}}>
-            <Image src={images[0].url} width={200} height={200}/>
+            <Image src={images[0].url} width={200} height={200} alt={''}/>
           </Box>
           <Box marginLeft={'15px'} sx={{flexBasis: '60%'}}>
             <Box fontWeight={'700'} fontSize={'16px'} marginBottom={'10px'}>{name}</Box>

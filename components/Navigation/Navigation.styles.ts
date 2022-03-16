@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
 import {IconButton, Menu} from "@mui/material";
 
+type NavigationContainerProps = {
+  background: string;
+}
+
 type NavigationProfileContainerProps = {
   isActive: boolean;
 }
@@ -9,19 +13,21 @@ type NavigationItemProps = {
   isActive: boolean;
 }
 
-export const NavigationContainer = styled.nav`
+export const NavigationContainer = styled.nav<NavigationContainerProps>`
   height: 70px;
   padding: 15px 30px 15px calc(70px + 30px);
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 1299;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: 0.2s all ease-in-out;
+  background: ${props => props.background};
   
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 699px) {
     padding: 15px 30px;
   }
 
@@ -36,7 +42,8 @@ export const NavigationButton = styled(IconButton)`
   height: 35px;
   width: 35px;
   cursor: pointer;
-  
+  border: 2px solid ${props => props.theme.colors.white};
+
   & > svg {
     font-size: 24px;
   }
@@ -54,11 +61,12 @@ export const NavigationProfileContainer = styled.div<NavigationProfileContainerP
   padding: 5px;
   display: flex;
   align-items: center;
-  background-color: ${(props) => props.isActive ? '#2e2e2e' : props.theme.colors.black};
+  background-color: ${(props) => props.isActive ? props.theme.colors['black-hover'] : props.theme.colors.black};
   border-radius: 20px;
   cursor: pointer;
   transition: 0.1s background ease-in-out;
-  
+  border: 2px solid ${props => props.theme.colors.white};
+
   &:hover {
     background-color: ${props => props.theme.colors['black-hover']};
   }

@@ -1,6 +1,6 @@
 import {Title} from "../../styles/global";
 import {Box, Grid} from "@mui/material";
-import Card from "../Card/Card";
+import ArtistCard from "../Artist/ArtistCard/ArtistCard";
 import {TopLink, TopTitleContainer} from "./Top.styles";
 import {FC} from "react";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
@@ -20,7 +20,7 @@ const TopArtists:FC<TopArtistsProps> = ({artists}) => {
       </TopTitleContainer>
       <Grid container spacing={2} columns={{xs: 2, tiny: 4, sm: 6, md: 8, big: 10, lg: 12}}>
         {filteredArtists && filteredArtists.map((artist) => (
-          <Card key={artist.id} artist={artist}/>
+          <ArtistCard key={artist.id} artist={artist}/>
         ))}
       </Grid>
     </Box>

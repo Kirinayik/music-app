@@ -1,11 +1,8 @@
 import type {GetServerSideProps, NextPage} from 'next'
-import {getSession, useSession} from "next-auth/react";
-import {useHistory} from "../hooks/useHistory";
+import {getSession} from "next-auth/react";
 import {Box} from "@mui/material";
 
 const Home: NextPage = () => {
-  useHistory()
-
   return (
     <Box>
       Home page

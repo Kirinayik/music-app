@@ -11,15 +11,22 @@ type TrackProps = {
   index: number;
 }
 
-const Track:FC<TrackProps> = ({track:{album, name, artists, duration_ms, ...track}, index}) => {
+const Track:FC<TrackProps> = ({track:{album, name, artists}, index}) => {
   return (
     <Grid item xs={12}>
-      <TrackContainer padding={{xs: '10px 20px', sm: '10px 50px'}}>
-        <TrackIndex>
-            {index}
-        </TrackIndex>
-        <TrackInfo name={name} artist={artists[0].name} image={album.images[0].url}/>
-        <TrackFeatures album={album.name}/>
+      <TrackContainer container padding={{xs: '10px 0px', tiny: '10px 50px'}} columnSpacing={0}>
+        <TrackIndex>{index}</TrackIndex>
+        {/*@ts-ignore*/}
+        <Grid item xs={9} md={6} big={7}>
+          <TrackInfo name={name}
+                     artist={artists[0].name}
+                     id={artists[0].id}
+                     image={album.images[0].url}/>
+        </Grid>
+        {/*@ts-ignore*/}
+        <Grid item xs={3} md={6} big={5}>
+          <TrackFeatures album={album.name}/>
+        </Grid>
         <TrackPlay/>
       </TrackContainer>
     </Grid>

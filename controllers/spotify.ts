@@ -26,6 +26,22 @@ class Spotify {
 
     return items
   }
+
+  async getArtist(req: IncomingMessage | undefined, id: string | string[] | undefined) {
+    // @ts-ignore
+    const {accessToken} = await getSession({req})
+    const artist = await SpotifyService.getArtist(accessToken, id);
+
+    return artist
+  }
+
+  async getTopArtistTracks(req: IncomingMessage | undefined, id: string | string[] | undefined) {
+    // @ts-ignore
+    const {accessToken} = await getSession({req})
+    const {tracks} = await SpotifyService.getTopArtistTracks(accessToken, id);
+
+    return tracks
+  }
 }
 
 export default new Spotify();

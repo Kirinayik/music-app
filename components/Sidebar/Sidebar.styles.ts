@@ -10,15 +10,14 @@ export const SidebarContainer = styled.div`
   top: 0;
   left: 0;
   height: 100vh;
-  z-index: 10;
+  z-index: 1300;
   background-color: ${props => props.theme.colors.black};
   
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 699px) {
     width: 100%;
     height: auto;
     top: 100%;
     transform: translateY(-100%);
-    z-index: 1000;
   }
 `
 

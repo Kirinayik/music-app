@@ -1,6 +1,5 @@
 import {GetServerSideProps, NextPage} from "next";
 import {getSession} from "next-auth/react";
-import {useHistory} from "../../hooks/useHistory";
 import {Box, Grid, Typography} from "@mui/material";
 import Spotify from '../../controllers/spotify'
 import LibraryCard from "../../components/LibraryCard/LibraryCard";
@@ -11,8 +10,6 @@ type PlaylistsProps = {
 }
 
 const Playlists:NextPage<PlaylistsProps> = ({playlists}) => {
-  useHistory()
-
   return (
     <Box padding={{xs: '90px 15px 40px', sm: '90px 30px 40px'}}>
       <Box marginBottom={'30px'}>

@@ -1,27 +1,28 @@
 import Image from "next/image";
 import {Box} from "@mui/material";
-import {formatName} from "../../helpers/formatName";
 import Link from "next/link";
-import {TrackArtist} from "./Track.styles";
+import {TrackArtist, TrackName} from "./Track.styles";
 import {FC} from "react";
 
 type TrackInfoProps = {
   image: string;
   name: string;
   artist: string;
+  id: string;
 }
 
-const TrackInfo:FC<TrackInfoProps> = ({image, name, artist}) => {
+const TrackInfo:FC<TrackInfoProps> = ({image, name, artist, id}) => {
   return (
-    <Box display={'flex'} alignItems={'flex-end'} flexBasis={{xs:'80%',sm: '40%', md: '50%', big: '60%'}}>
-      <Image src={image} width={40} height={40}/>
-      <Box marginLeft={'15px'}>
-        <Box fontWeight={'600'}>{formatName(name, 16)}</Box>
-        <Link href={'/'}>
-          <TrackArtist>
-            {formatName(artist, 20)}
-          </TrackArtist>
-        </Link>
+    <Box display={'flex'} alignItems={'center'} height={'100%'}
+    >
+      <Box>
+        <Image src={image} layout='fixed' width={50} height={50} alt={''}/>
+      </Box>
+      <Box marginLeft={{xs: '10px', tiny: '15px'}} sx={{overflow: 'hidden'}}>
+        <TrackName>{name}</TrackName>
+          <Link href={`/artists/${id}`} passHref>
+            <TrackArtist>{artist}</TrackArtist>
+          </Link>
       </Box>
     </Box>
   );

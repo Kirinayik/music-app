@@ -2,8 +2,9 @@ import {createTheme} from "@mui/material";
 
 export const emotionTheme = {
   colors: {
-    black: '#070707',
+    black: '#000',
     'black-hover': '#373737',
+    'black-highlight': '#070707',
     green: '#0DB145',
     white: '#ffffff',
     grey: '#ABABAB',
