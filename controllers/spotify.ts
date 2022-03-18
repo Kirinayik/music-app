@@ -42,6 +42,22 @@ class Spotify {
 
     return tracks
   }
+
+  async getAlbum(req: IncomingMessage | undefined, id: string | string[] | undefined) {
+    // @ts-ignore
+    const {accessToken} = await getSession({req})
+    const album = await SpotifyService.getAlbum(accessToken, id);
+
+    return album
+  }
+
+  async getAlbumTracks(req: IncomingMessage | undefined, id: string | string[] | undefined) {
+    // @ts-ignore
+    const {accessToken} = await getSession({req})
+    const {items} = await SpotifyService.getAlbumTracks(accessToken, id);
+
+    return items
+  }
 }
 
 export default new Spotify();

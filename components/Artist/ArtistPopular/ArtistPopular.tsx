@@ -1,8 +1,8 @@
 import {Box, Grid} from "@mui/material";
-import {Title} from "../../styles/global";
+import {Title} from "../../../styles/global";
 import {FC} from "react";
-import Track from "../Track/Track";
-import {TopTitleContainer} from "../Top/Top.styles";
+import Track from "../../Track/Track";
+import {TopTitleContainer} from "../../Top/Top.styles";
 import TrackObjectFull = SpotifyApi.TrackObjectFull;
 
 type ArtistPopularProps = {
@@ -10,8 +10,6 @@ type ArtistPopularProps = {
 }
 
 const ArtistPopular:FC<ArtistPopularProps> = ({topTracks}) => {
-  console.log(topTracks)
-
   return (
     <Box padding={{xs: '50px 15px 30px', sm: '50px 30px 30px'}}>
       <TopTitleContainer>
@@ -19,7 +17,7 @@ const ArtistPopular:FC<ArtistPopularProps> = ({topTracks}) => {
       </TopTitleContainer>
         <Grid container>
           {topTracks.map((track, i) => (
-              <Track track={track} index={i+1} key={track.id}/>
+              <Track track={track} index={i+1} key={track.id} />
             )
           )}
         </Grid>

@@ -1,7 +1,7 @@
-import {Title} from "../../styles/global";
+import {Title} from "../../../styles/global";
 import {Box, Grid} from "@mui/material";
-import ArtistCard from "../Artist/ArtistCard/ArtistCard";
-import {TopLink, TopTitleContainer} from "./Top.styles";
+import ArtistCard from "../../Artist/ArtistCard/ArtistCard";
+import {TopLink, TopTitleContainer} from "../Top.styles";
 import {FC} from "react";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 

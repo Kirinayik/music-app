@@ -2,8 +2,8 @@ import type {GetServerSideProps, NextPage} from 'next'
 import {getSession} from "next-auth/react";
 import {Box} from "@mui/material";
 import Spotify from '../../controllers/spotify'
-import User from "../../components/User/User";
-import ArtistPopular from "../../components/Artist/ArtistPopular";
+import ArtistPopular from "../../components/Artist/ArtistPopular/ArtistPopular";
+import ArtistProfile from "../../components/Artist/ArtistProfile/ArtistProfile";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 import TrackObjectFull = SpotifyApi.TrackObjectFull;
 
@@ -12,11 +12,11 @@ export type ArtistProps = {
   topTracks: TrackObjectFull[]
 }
 
-const Artist: NextPage<ArtistProps> = ({artist: {name, followers,images}, topTracks}) => {
+const Artist: NextPage<ArtistProps> = ({artist, topTracks}) => {
 
   return (
     <Box>
-      <User type={'artist'} artist={{name, images, followers: followers.total}}/>
+      <ArtistProfile artist={artist}/>
       <ArtistPopular topTracks={topTracks}/>
     </Box>
   )

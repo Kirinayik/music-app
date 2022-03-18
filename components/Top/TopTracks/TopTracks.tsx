@@ -1,8 +1,8 @@
-import {TopLink, TopTitleContainer} from "./Top.styles";
-import {Title} from "../../styles/global";
+import {TopLink, TopTitleContainer} from "../Top.styles";
+import {Title} from "../../../styles/global";
 import {Box, Grid} from "@mui/material";
 import {FC} from "react";
-import Track from "../Track/Track";
+import Track from "../../Track/Track";
 import TrackObjectFull = SpotifyApi.TrackObjectFull;
 
 type TopTracksProps = {

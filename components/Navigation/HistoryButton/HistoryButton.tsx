@@ -1,9 +1,9 @@
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import {FC} from "react";
-import {NavigationButton} from "./Navigation.styles";
-import {useHistory} from "../../hooks/useHistory";
-import {useAppSelector} from "../../store";
+import {NavigationButton} from "../Navigation.styles";
+import {useHistory} from "../../../hooks/useHistory";
+import {useAppSelector} from "../../../store";
 
 type HistoryButtonProps = {
   type: string;

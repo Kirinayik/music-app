@@ -5,7 +5,6 @@ import {useSession} from "next-auth/react";
 
 const Custom404:NextPage = () => {
   const data = useSession()
-  console.log(data)
 
   return (
     <Box>

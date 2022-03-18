@@ -1,9 +1,9 @@
 import {Box, Grid} from "@mui/material";
 import {FC} from "react";
 import Image from 'next/image'
-import {ArtistCardContainer, ImageContainer, InfoContainer} from "./ArtistCard.styles";
 import {formatName} from "../../../helpers/formatName";
 import Link from 'next/link'
+import {ArtistCardContainer, ImageContainer, InfoContainer} from "../Artist.styles";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 
 type CardProps = {

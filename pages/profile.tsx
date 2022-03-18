@@ -1,10 +1,10 @@
 import {GetServerSideProps, NextPage} from "next";
 import {getSession} from "next-auth/react";
 import {Box} from "@mui/material";
-import User from "../components/User/User";
-import TopArtists from "../components/Top/TopArtists";
+import UserProfile from "../components/User/UserProfile/UserProfile";
+import TopArtists from "../components/Top/TopArtists/TopArtists";
 import Spotify from "../controllers/spotify";
-import TopTracks from "../components/Top/TopTracks";
+import TopTracks from "../components/Top/TopTracks/TopTracks";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 import TrackObjectFull = SpotifyApi.TrackObjectFull;
 
@@ -16,7 +16,7 @@ type ProfileProps = {
 const Profile:NextPage<ProfileProps> = ({artists, tracks}) => {
   return (
     <Box>
-      <User type={'profile'}/>
+      <UserProfile/>
       {artists.length > 0 && <TopArtists artists={artists}/>}
       {tracks.length > 0 && <TopTracks tracks={tracks}/>}
     </Box>

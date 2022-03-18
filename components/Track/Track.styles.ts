@@ -11,20 +11,37 @@ export const TrackContainer = styled(Grid)`
   &:hover {
     background-color: ${props => props.theme.colors['black-hover']};
   }
+  
+  @media (min-width: 0px) {
+    padding: 10px;
+  }
+
+  @media (min-width: 700px) {
+    padding: 10px 50px;
+  }
 `
 
+export const TrackIndexContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: 0px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 700px) {
+    display: flex;
+  }
+`
 export const TrackIndex = styled.div`
   font-size: 16px;
   font-weight: 300;
   color: rgba(255,255,255,0.7);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 21px;
-  
-  @media screen and (max-width: 510px) {
-    display: none;
-  }
 `
 
 export const TrackPlayContainer = styled.div`
@@ -33,18 +50,29 @@ export const TrackPlayContainer = styled.div`
   transform: translateY(-50%);
   right: 5px;
   color: ${props => props.theme.colors.white};
-  
-  @media screen and (max-width: 699px) {
+
+  @media screen and (min-width: 0px) {
     display: none;
+  }
+  
+  @media screen and (min-width: 700px) {
+    display: block;
   }
 `
 
 export const TrackFeaturesContainer = styled(Box)`
   display: flex;
   align-items: center;
-  padding: 0 10px;
   overflow: hidden;
   height: 100%;
+  
+  @media (min-width: 0px) {
+    padding: 0;
+  }
+
+  @media (min-width: 510px) {
+    padding: 0 10px;
+  }
 `
 
 export const FeaturesContainer = styled(Box)`

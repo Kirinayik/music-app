@@ -1,8 +1,8 @@
 import {FC} from "react";
 import {Box, Grid} from "@mui/material";
-import {LibraryCardContainer} from "./LibraryCard.styles";
 import Image from 'next/image'
-import {formatName} from "../../helpers/formatName";
+import {formatName} from "../../../helpers/formatName";
+import {LibraryCardContainer} from "../Library.styles";
 import PlaylistObjectFull = SpotifyApi.PlaylistObjectFull;
 
 type LibraryCardProps = {

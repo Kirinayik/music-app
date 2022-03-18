@@ -2,7 +2,7 @@ import {GetServerSideProps, NextPage} from "next";
 import {getSession} from "next-auth/react";
 import {Box, Grid, Typography} from "@mui/material";
 import Spotify from '../../controllers/spotify'
-import LibraryCard from "../../components/LibraryCard/LibraryCard";
+import LibraryCard from "../../components/Library/LibraryCard/LibraryCard";
 import PlaylistObjectFull = SpotifyApi.PlaylistObjectFull;
 
 type PlaylistsProps = {

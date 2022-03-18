@@ -1,17 +1,21 @@
 import {Box, IconButton} from "@mui/material";
-import {FeaturesContainer, TrackArtist, TrackFeaturesContainer} from "./Track.styles";
+import {FeaturesContainer, TrackArtist, TrackFeaturesContainer} from "../Track.styles";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {FC} from "react";
+import Link from 'next/link'
 
 type TrackFeaturesProps = {
-  album: string;
+  album: string | null;
+  id: string | null;
 }
 
-const TrackFeatures:FC<TrackFeaturesProps> = ({album}) => {
+const TrackFeatures:FC<TrackFeaturesProps> = ({album, id}) => {
   return (
-    <TrackFeaturesContainer justifyContent={{xs:'flex-end',md:'space-between'}}>
-      <Box display={{xs: 'none', md: 'block'}}>
-        <TrackArtist>{album}</TrackArtist>
+    <TrackFeaturesContainer justifyContent={album && id ? {xs:'flex-end',md:'space-between'} : 'flex-end'}>
+      <Box display={album && id ? {xs: 'none', md: 'block'} : 'none'}>
+        <Link href={`/albums/${id}`} passHref>
+          <TrackArtist>{album}</TrackArtist>
+        </Link>
       </Box>
       <FeaturesContainer width={{xs:'auto', tiny: '100px'}}>
         <IconButton disableRipple color={'inherit'} sx={{marginRight: {xs:'0', tiny:'15px'}}}>

@@ -1,6 +1,6 @@
 import {Stack} from "@mui/material";
 import Link from 'next/link';
-import {NavigationItem} from "./Navigation.styles";
+import {NavigationItem} from "../Navigation.styles";
 import {useRouter} from "next/router";
 
 const NavigationFeature = () => {

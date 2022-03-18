@@ -30,7 +30,7 @@ const Layout:FC<LayoutProps> = ({ children }) => {
       <LayoutContainer
         component={'main'}
            padding={{
-             xs: router.pathname !== '/login' ? '0 0 70px' : '0px',
+             xs: router.pathname !== '/login' ? '0 0 70px' : '0',
              sm: router.pathname !== '/login' ? '0 0 0 70px' : '0'
            }}>
         {loading && <Loader/>}

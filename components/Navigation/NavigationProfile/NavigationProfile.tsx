@@ -1,11 +1,11 @@
 import {Avatar, Box, Divider, MenuItem} from "@mui/material";
 import {useSession} from "next-auth/react";
-import {NavigationProfileContainer, ProfileMenu} from "./Navigation.styles";
+import {NavigationProfileContainer, ProfileMenu} from "../Navigation.styles";
 import {MouseEvent, useState} from "react";
-import {useAuth} from "../../hooks/useAuth";
-import {useNavigate} from "../../hooks/useNavigate";
+import {useAuth} from "../../../hooks/useAuth";
+import {useNavigate} from "../../../hooks/useNavigate";
 import LogoutIcon from '@mui/icons-material/Logout';
-import {formatName} from "../../helpers/formatName";
+import {formatName} from "../../../helpers/formatName";
 
 const NavigationProfile = () => {
   const {handleToProfile} = useNavigate();
