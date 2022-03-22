@@ -1,12 +1,12 @@
 import {IncomingMessage} from "http";
 import {getSession} from "next-auth/react";
-import SpotifyService from "../service/spotify-service";
+import ArtistService from "../service/artist-service";
 
 class ArtistController {
   async getArtists(req:IncomingMessage | undefined) {
     // @ts-ignore
     const {accessToken} = await getSession({req})
-    const {artists: {items}} = await SpotifyService.getArtists(accessToken);
+    const {artists: {items}} = await ArtistService.getArtists(accessToken);
 
     return items
   }
@@ -14,7 +14,7 @@ class ArtistController {
   async getArtist(req: IncomingMessage | undefined, id: string | string[] | undefined) {
     // @ts-ignore
     const {accessToken} = await getSession({req})
-    const artist = await SpotifyService.getArtist(accessToken, id);
+    const artist = await ArtistService.getArtist(accessToken, id);
 
     return artist
   }
@@ -22,25 +22,17 @@ class ArtistController {
   async getTopArtistTracks(req: IncomingMessage | undefined, id: string | string[] | undefined) {
     // @ts-ignore
     const {accessToken} = await getSession({req})
-    const {tracks} = await SpotifyService.getTopArtistTracks(accessToken, id);
+    const {tracks} = await ArtistService.getTopArtistTracks(accessToken, id);
 
     return tracks
   }
 
-  async getArtistAlbums(req: IncomingMessage | undefined, id: string | string[] | undefined) {
+  async getArtistAlbums(req: IncomingMessage | undefined, id: string | string[] | undefined, limit:number = 6) {
     // @ts-ignore
     const {accessToken} = await getSession({req})
-    const {items} = await SpotifyService.getArtistAlbums(accessToken, id);
+    const albums = await ArtistService.getArtistAlbums(accessToken, id, limit);
 
-    return items
-  }
-
-  async getAlbum(req: IncomingMessage | undefined, id: string | string[] | undefined) {
-    // @ts-ignore
-    const {accessToken} = await getSession({req})
-    const album = await SpotifyService.getAlbum(accessToken, id);
-
-    return album
+    return albums
   }
 }
 

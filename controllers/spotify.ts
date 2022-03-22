@@ -18,6 +18,14 @@ class Spotify {
 
     return items
   }
+
+  async nextCall(req: IncomingMessage | undefined, nextUrl: string | string[]) {
+    // @ts-ignore
+    const {accessToken} = await getSession({req})
+    const items = await SpotifyService.nextCall(accessToken, nextUrl);
+
+    return items
+  }
 }
 
 export default new Spotify();

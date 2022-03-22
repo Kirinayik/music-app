@@ -1,5 +1,5 @@
 export const errorHandler = (error:any) => {
-  const status = error.response.status;
+  const status = error.status;
 
   switch (status) {
     case '404':

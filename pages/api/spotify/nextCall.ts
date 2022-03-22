@@ -1,13 +1,13 @@
 import type {NextApiRequest, NextApiResponse} from 'next'
-import AlbumController from "../../../controllers/album";
+import SpotifyController from "../../../controllers/spotify";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   switch (req.method) {
     case 'GET':
-      const {id, nextUrl} = req.query;
+      const {nextUrl} = req.query;
 
-      const albumTracks = await AlbumController.nextCall(req, id, nextUrl)
+      const items = await SpotifyController.nextCall(req, nextUrl + '&include_groups=album,single')
 
-      return res.status(200).json(albumTracks)
+      return res.status(200).json(items)
   }
 }

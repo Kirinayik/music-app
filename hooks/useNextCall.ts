@@ -1,17 +1,17 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import TrackObjectFull = SpotifyApi.TrackObjectFull;
 
-export const useLoadTracks = (initialTracks:any, initialNextUrl:string | null, id:string | string[] | undefined) => {
+export const useNextCall = (initialArray:any, initialNextUrl:string | null) => {
   const [fetch, setFetch] = useState<boolean>(false)
-  const [tracks, setTracks] = useState<TrackObjectFull[]>([...initialTracks])
+  const [items, setItems] = useState<any[]>([...initialArray])
   const [nextUrl, setNextUrl] = useState<string | null>(initialNextUrl)
 
   useEffect(() => {
     if (fetch && nextUrl) {
       (async () => {
-        const {data} = await axios.get(`http://localhost:3000/api/spotify/nextCall?id=${id}&nextUrl=${nextUrl}`)
-        setTracks(tracks.concat(data.items))
+        const {data} = await axios.get(`http://localhost:3000/api/spotify/nextCall?nextUrl=${nextUrl}`)
+        console.log(data)
+        setItems(items.concat(data.items))
         setNextUrl(data.next)
         setFetch(false)
       })()
@@ -32,5 +32,5 @@ export const useLoadTracks = (initialTracks:any, initialNextUrl:string | null, i
     }
   }
 
-  return {fetch, tracks, nextUrl}
+  return {fetch, items, nextUrl}
 }

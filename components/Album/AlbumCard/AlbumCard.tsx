@@ -1,4 +1,5 @@
 import AlbumObjectFull = SpotifyApi.AlbumObjectFull;
+import AlbumObjectSimplified = SpotifyApi.AlbumObjectSimplified;
 import {FC} from "react";
 import {Box, Grid} from "@mui/material";
 import {InfoContainer} from "../../Artist/Artist.styles";
@@ -7,7 +8,7 @@ import Link from "next/link";
 import {CardContainer, CardName, ImageContainer} from "../../../styles/global";
 
 type AlbumCardProps = {
-  album: AlbumObjectFull;
+  album: AlbumObjectFull | AlbumObjectSimplified;
 }
 
 const AlbumCard:FC<AlbumCardProps> = ({album: {name, images, id}}) => {

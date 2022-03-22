@@ -1,10 +1,10 @@
 import {GetServerSideProps, NextPage} from "next";
 import {Box} from "@mui/material";
-import UserProfile from "../components/User/UserProfile/UserProfile";
-import TopArtists from "../components/Top/TopArtists/TopArtists";
-import Spotify from "../controllers/spotify";
-import TopTracks from "../components/Top/TopTracks/TopTracks";
-import {errorHandler} from "../helpers/errorHandler";
+import UserProfile from "../../components/User/UserProfile/UserProfile";
+import TopArtists from "../../components/Top/TopArtists/TopArtists";
+import Spotify from "../../controllers/spotify";
+import TopTracks from "../../components/Top/TopTracks/TopTracks";
+import {errorHandler} from "../../helpers/errorHandler";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 import TrackObjectFull = SpotifyApi.TrackObjectFull;
 
