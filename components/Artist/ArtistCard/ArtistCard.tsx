@@ -1,9 +1,9 @@
 import {Box, Grid} from "@mui/material";
 import {FC} from "react";
 import Image from 'next/image'
-import {formatName} from "../../../helpers/formatName";
 import Link from 'next/link'
-import {ArtistCardContainer, ImageContainer, InfoContainer} from "../Artist.styles";
+import {InfoContainer} from "../Artist.styles";
+import {CardContainer, CardName, ImageContainer} from "../../../styles/global";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 
 type CardProps = {
@@ -14,15 +14,15 @@ const ArtistCard:FC<CardProps> = ({artist:{images, name, id}}) => {
   return (
     <Grid item xs={2}>
       <Link href={`/artists/${id}`} passHref>
-        <ArtistCardContainer>
-          <ImageContainer>
+        <CardContainer>
+          <ImageContainer variant={'circle'}>
             <Image src={images[0]?.url} width={250} height={250} alt={''}/>
           </ImageContainer>
           <InfoContainer>
-            <Box>{formatName(name, 27)}</Box>
+            <CardName>{name}</CardName>
             <Box fontWeight={'300'} color={'rgba(255,255,255,0.5)'}>Artist</Box>
           </InfoContainer>
-        </ArtistCardContainer>
+        </CardContainer>
       </Link>
     </Grid>
   );

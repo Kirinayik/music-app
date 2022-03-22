@@ -2,6 +2,10 @@ import {css, Global} from "@emotion/react";
 import emotionNormalize from 'emotion-normalize';
 import styled from "@emotion/styled";
 
+type ImageContainerProps = {
+  variant?: string;
+}
+
 export const GlobalStyles = () => (
   <Global styles={css`
       ${emotionNormalize}
@@ -67,6 +71,10 @@ export const GlobalStyles = () => (
       h1,h2,h3,h4,h5,h6 {
       margin: 0;
       }
+      
+      ul {
+      margin: 0;
+      }
     `}
   />
 )
@@ -80,12 +88,54 @@ export const LoginPage = styled.div`
 `
 
 export const Title = styled.h3`
-  font-size: 24px;
   font-weight: 700;
-  line-height: 35px;
   
-  @media screen and (max-width: 510px) {
+  @media (min-width: 510px) {
+    font-size: 24px;
+    line-height: 35px;
+  }
+
+  @media (min-width: 0px) {
     font-size: 18px;
     line-height: 24px;
   }
+
 `
+export const CardContainer = styled.div`
+  cursor: pointer;
+  background: rgb(38,38,38);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.2s background ease-in-out;
+  border-radius: 8px;
+  padding: 30px 20px;
+  height: 100%;
+
+  &:hover {
+    background: ${props => props.theme.colors['black-hover']};
+  }
+`
+
+export const ImageContainer = styled.div<ImageContainerProps>`
+  position: relative;
+  overflow: hidden;
+  max-width: 215px;
+  margin-bottom: 30px;
+  
+  ${props => props.variant === 'circle' && `
+    & img {
+    border-radius: 50%;
+  }
+  `}
+`
+
+export const CardName = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+`
+

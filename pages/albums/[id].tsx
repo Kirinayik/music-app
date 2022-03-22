@@ -1,30 +1,38 @@
 import type {GetServerSideProps, NextPage} from 'next'
-import {getSession} from "next-auth/react";
-import {Box, Grid} from "@mui/material";
-import Spotify from '../../controllers/spotify'
+import {Box, CircularProgress, Grid} from "@mui/material";
+import AlbumController from '../../controllers/album';
 import AlbumProfile from "../../components/Album/AlbumProfile/AlbumProfile";
 import Track from "../../components/Track/Track";
+import {errorHandler} from "../../helpers/errorHandler";
+import {useRouter} from "next/router";
+import {useTheme} from "@emotion/react";
 import AlbumObjectFull = SpotifyApi.AlbumObjectFull;
-import TrackObjectFull = SpotifyApi.TrackObjectFull;
+import {useLoadTracks} from "../../hooks/useLoadTracks";
 
 type AlbumProps = {
   album: AlbumObjectFull;
-  albumTracks: TrackObjectFull[];
 }
 
-const Album: NextPage<AlbumProps> = ({album, albumTracks}) => {
-  console.log(albumTracks)
+const Album: NextPage<AlbumProps> = ({album}) => {
+  const theme = useTheme();
+  const {id} = useRouter().query
+  const {tracks, fetch, nextUrl} = useLoadTracks(album.tracks.items, album.tracks.next, id);
 
   return (
     <Box >
       <AlbumProfile album={album}/>
       <Box padding={{xs: '50px 15px 30px', sm: '50px 30px 30px'}}>
         <Grid container>
-          {albumTracks.map((track, i) => (
+          {tracks.map((track, i) => (
               <Track track={track} index={i+1} key={track.id} type={'album'}/>
             )
           )}
         </Grid>
+        {fetch && nextUrl && (
+          <Box padding={'15px 0'} display={'flex'} justifyContent={'center'} color={theme.colors.green}>
+            <CircularProgress color={'inherit'}/>
+          </Box>
+        )}
       </Box>
     </Box>
   )
@@ -33,38 +41,21 @@ const Album: NextPage<AlbumProps> = ({album, albumTracks}) => {
 export default Album;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession(context);
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    };
-  }
-
   if (context?.params?.id) {
     const {id} = context.params;
     try {
-      const album = await Spotify.getAlbum(context.req, id)
-      const albumTracks = await Spotify.getAlbumTracks(context.req, id)
+      const album = await AlbumController.getAlbum(context.req, id)
 
       return {
-        props: { session, album, albumTracks },
+        props: { album },
       };
     } catch (e) {
-      return {
-        redirect: {
-          destination: '/page_not_found',
-          permanent: false,
-        }
-      }
+      return errorHandler(e)
     }
   }
 
   return {
-    props: { session },
+    props: {},
   };
 }
 

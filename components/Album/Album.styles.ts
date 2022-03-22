@@ -5,7 +5,7 @@ export const AlbumProfileInfo = styled.ul`
   align-items: center;
   padding: 0;
 
-  & > li:first-child {
+  & > li:first-of-type {
     margin: 0 15px 0 0;
     list-style-type: none;
   }

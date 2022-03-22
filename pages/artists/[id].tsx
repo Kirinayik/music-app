@@ -1,23 +1,26 @@
 import type {GetServerSideProps, NextPage} from 'next'
-import {getSession} from "next-auth/react";
 import {Box} from "@mui/material";
-import Spotify from '../../controllers/spotify'
+import ArtistController from '../../controllers/artist'
 import ArtistPopular from "../../components/Artist/ArtistPopular/ArtistPopular";
 import ArtistProfile from "../../components/Artist/ArtistProfile/ArtistProfile";
+import ArtistAlbums from "../../components/Artist/ArtistAlbums/ArtistAlbums";
+import {errorHandler} from "../../helpers/errorHandler";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 import TrackObjectFull = SpotifyApi.TrackObjectFull;
+import AlbumObjectFull = SpotifyApi.AlbumObjectFull;
 
-export type ArtistProps = {
+type ArtistProps = {
   artist: ArtistObjectFull;
-  topTracks: TrackObjectFull[]
+  topTracks: TrackObjectFull[];
+  albums: AlbumObjectFull[];
 }
 
-const Artist: NextPage<ArtistProps> = ({artist, topTracks}) => {
-
+const Artist: NextPage<ArtistProps> = ({artist, topTracks, albums}) => {
   return (
     <Box>
       <ArtistProfile artist={artist}/>
       <ArtistPopular topTracks={topTracks}/>
+      <ArtistAlbums albums={albums}/>
     </Box>
   )
 }
@@ -25,38 +28,23 @@ const Artist: NextPage<ArtistProps> = ({artist, topTracks}) => {
 export default Artist;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession(context);
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    };
-  }
-
   if (context?.params?.id) {
     const {id} = context.params;
     try {
-      const artist = await Spotify.getArtist(context.req, id)
-      const topTracks = await Spotify.getTopArtistTracks(context.req, id)
+      const artist = await ArtistController.getArtist(context.req, id)
+      const topTracks = await ArtistController.getTopArtistTracks(context.req, id)
+      const albums = await ArtistController.getArtistAlbums(context.req, id)
 
       return {
-        props: { session, artist, topTracks },
+        props: { artist, topTracks, albums },
       };
     } catch (e) {
-      return {
-        redirect: {
-          destination: '/page_not_found',
-          permanent: false,
-        }
-      }
+      return errorHandler(e)
     }
   }
 
   return {
-    props: { session },
+    props: {},
   };
 }
 

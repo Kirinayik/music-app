@@ -45,6 +45,7 @@ export const muiTheme = createTheme({
             height: '36px',
             textTransform: 'uppercase',
             fontWeight: 700,
+            fontFamily: 'inherit',
             borderRadius: '36px',
             background: '#0DB145',
             border: '3px solid #0DB145'

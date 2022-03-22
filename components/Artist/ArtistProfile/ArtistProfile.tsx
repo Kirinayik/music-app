@@ -16,7 +16,7 @@ const ArtistProfile:FC<ArtistProfileProps> = ({artist: {images, name, followers}
         <UserAvatar src={undefined}/>
       )}
       <UserInfoContainer>
-        <UserType>Album</UserType>
+        <UserType>Artist</UserType>
         <UserName>
           {formatName(name, 40)}
         </UserName>

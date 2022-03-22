@@ -1,8 +1,8 @@
 import {GetServerSideProps, NextPage} from "next";
-import {getSession} from "next-auth/react";
 import {Box, Grid, Typography} from "@mui/material";
-import Spotify from "../../controllers/spotify";
+import ArtistController from "../../controllers/artist";
 import ArtistCard from "../../components/Artist/ArtistCard/ArtistCard";
+import {errorHandler} from "../../helpers/errorHandler";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 
 type ArtistsProps = {
@@ -37,20 +37,13 @@ const Artists:NextPage<ArtistsProps> = ({artists}) => {
 export default Artists
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession(context);
+  try {
+    const artists = await ArtistController.getArtists(context.req)
 
-  if (!session) {
     return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
+      props: { artists},
     };
+  } catch (e) {
+    return errorHandler(e)
   }
-
-  const artists = await Spotify.getArtists(context.req)
-
-  return {
-    props: { session, artists},
-  };
 }

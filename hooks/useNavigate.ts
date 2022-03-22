@@ -7,5 +7,9 @@ export const useNavigate = () => {
     return router.push('/profile')
   }
 
-  return {handleToProfile};
+  const handleToHome = () => {
+    return router.replace('/')
+  }
+
+  return {handleToProfile, handleToHome};
 };

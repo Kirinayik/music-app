@@ -24,6 +24,8 @@ const NavigationProfile = () => {
     await handleToProfile()
   }
 
+  if (!data) return null
+
   return (
     <>
       <NavigationProfileContainer isActive={open} onClick={handleClick}>

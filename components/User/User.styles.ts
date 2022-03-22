@@ -59,6 +59,7 @@ export const UserInfoContainer = styled.div`
 `
 
 export const UserName = styled.h2`
+  margin-bottom: 15px;
   line-height: 1;
   font-weight: inherit;
   letter-spacing: 0;
@@ -83,14 +84,14 @@ export const UserName = styled.h2`
     font-size: 68px;
   }
   
-  @media (min-width: 900px) {
+  @media (min-width: 1100px) {
     font-size: 96px;
   }
 `
 
 export const UserType = styled.div`
-  textTransform: uppercase;
-  marginBottom: 15px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
 
   @media (min-width: 0px) {
     display: none;

@@ -84,6 +84,18 @@ class SpotifyService {
     return data
   }
 
+  async getArtistAlbums(token: string, id: string | string[] | undefined) {
+    const {access_token} = await this.getAccessToken(token);
+    const {data} = await axios.get(`https://api.spotify.com/v1/artists/${id}/albums?limit=6`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        'Content-Type': 'application/json'
+      },
+    })
+
+    return data
+  }
+
   async getAlbum(token: string, id: string | string[] | undefined) {
     const {access_token} = await this.getAccessToken(token);
     const {data} = await axios.get(`https://api.spotify.com/v1/albums/${id}`, {
@@ -96,16 +108,18 @@ class SpotifyService {
     return data
   }
 
-  async getAlbumTracks(token: string, id: string | string[] | undefined) {
+  async nextCall(token: string, id: string | string[] | undefined, nextUrl: string | string[]) {
     const {access_token} = await this.getAccessToken(token);
-    const {data} = await axios.get(`https://api.spotify.com/v1/albums/${id}/tracks`, {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-        'Content-Type': 'application/json'
-      },
-    })
+    if (typeof nextUrl === "string") {
+      const {data} = await axios.get(nextUrl, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          'Content-Type': 'application/json'
+        },
+      })
 
-    return data
+      return data
+    }
   }
 }
 
