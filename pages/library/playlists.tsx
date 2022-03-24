@@ -3,13 +3,19 @@ import {Box, Grid, Typography} from "@mui/material";
 import Spotify from '../../controllers/spotify'
 import LibraryCard from "../../components/Library/LibraryCard/LibraryCard";
 import {errorHandler} from "../../helpers/errorHandler";
-import PlaylistObjectFull = SpotifyApi.PlaylistObjectFull;
+import FavouriteCard from "../../components/Favourite/FavouriteCard/FavouriteCard";
+import {useNextCall} from "../../hooks/useNextCall";
+import LazyCircular from "../../components/assets/LazyCircular";
+import ListOfCurrentUsersPlaylistsResponse = SpotifyApi.ListOfCurrentUsersPlaylistsResponse;
 
 type PlaylistsProps = {
-  playlists: PlaylistObjectFull[];
+  playlists: ListOfCurrentUsersPlaylistsResponse;
+  savedTracksLength: number;
 }
 
-const Playlists:NextPage<PlaylistsProps> = ({playlists}) => {
+const Playlists:NextPage<PlaylistsProps> = ({playlists, savedTracksLength}) => {
+  const {items, fetch, nextUrl} = useNextCall(playlists.items, playlists.next)
+
   return (
     <Box padding={{xs: '90px 15px 40px', sm: '90px 30px 40px'}}>
       <Box marginBottom={'30px'}>
@@ -17,9 +23,10 @@ const Playlists:NextPage<PlaylistsProps> = ({playlists}) => {
           Playlists
         </Typography>
       </Box>
-      {playlists.length > 0 ? (
+      {items.length > 0 ? (
         <Grid container spacing={3} columns={{xs: 2, sm: 4, big: 6, xl: 8}}>
-          {playlists.map((playlist) => (
+          {savedTracksLength > 0 && <FavouriteCard total={savedTracksLength}/>}
+          {items.map((playlist) => (
             <LibraryCard playlist={playlist} key={playlist.id}/>
           ))}
         </Grid>
@@ -30,6 +37,7 @@ const Playlists:NextPage<PlaylistsProps> = ({playlists}) => {
           </Typography>
         </Box>
       )}
+      <LazyCircular fetch={fetch} nextUrl={nextUrl}/>
     </Box>
   );
 };
@@ -39,9 +47,10 @@ export default Playlists
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const playlists = await Spotify.getPlaylists(context.req)
+    const {total:savedTracksLength} = await Spotify.getSavedTracks(context.req, 1)
 
     return {
-      props: { playlists },
+      props: { playlists, savedTracksLength },
     };
   } catch (e) {
     return errorHandler(e)

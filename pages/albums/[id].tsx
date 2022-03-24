@@ -43,7 +43,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: { album },
       };
     } catch (e) {
-      console.log(e)
       return errorHandler(e)
     }
   }

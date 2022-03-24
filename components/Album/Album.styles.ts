@@ -4,6 +4,7 @@ export const AlbumProfileInfo = styled.ul`
   display: flex;
   align-items: center;
   padding: 0;
+  flex-wrap: wrap;
 
   & > li:first-of-type {
     margin: 0 15px 0 0;

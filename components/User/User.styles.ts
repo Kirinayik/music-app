@@ -60,7 +60,7 @@ export const UserInfoContainer = styled.div`
 
 export const UserName = styled.h2`
   margin-bottom: 15px;
-  line-height: 1;
+  line-height: 1.2;
   font-weight: inherit;
   letter-spacing: 0;
   overflow: hidden;
@@ -103,9 +103,8 @@ export const UserType = styled.div`
 `
 
 export const UserSubtitle = styled.div`
-  font-weight: 300;
-  font-size: 16px;
   margin-top: 15px;
+  font-weight: 700;
   
   @media (min-width: 0px) {
     text-align: center;

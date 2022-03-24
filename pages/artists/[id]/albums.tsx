@@ -12,7 +12,7 @@ type ArtistProps = {
 }
 
 const Albums:NextPage<ArtistProps> = ({albums}) => {
-  const {items, fetch, nextUrl} = useNextCall(albums.items, albums.next)
+  const {items, fetch, nextUrl} = useNextCall(albums.items, albums.next, 'include_groups=album,single')
 
   return (
     <Box padding={{xs: '90px 0 30px', sm: '90px 0 30px'}}>

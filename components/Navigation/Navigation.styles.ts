@@ -15,7 +15,6 @@ type NavigationItemProps = {
 
 export const NavigationContainer = styled.nav<NavigationContainerProps>`
   height: 70px;
-  padding: 15px 30px 15px calc(70px + 30px);
   position: fixed;
   top: 0;
   left: 0;
@@ -27,13 +26,14 @@ export const NavigationContainer = styled.nav<NavigationContainerProps>`
   transition: 0.2s all ease-in-out;
   background: ${props => props.background};
   
-  @media screen and (max-width: 699px) {
-    padding: 15px 30px;
-  }
-
-  @media screen and (max-width: 510px) {
+  @media screen and (min-width: 0px) {
     padding: 15px;
   }
+
+  @media screen and (min-width: 700px) {
+    padding: 15px 30px 15px calc(70px + 30px);
+  }
+
 `
 
 export const NavigationButton = styled(IconButton)`
@@ -99,9 +99,7 @@ export const ProfileMenu = styled(Menu)`
 `
 
 export const NavigationItem = styled.a<NavigationItemProps>`
-  padding: 10px 15px;
   display: inline-block;
-  width: 90px;
   background: ${props => props.isActive ? props.theme.colors['black-hover'] : 'transparer'};
   text-align: center;
   transition: 0.1s background ease-in-out;
@@ -109,5 +107,15 @@ export const NavigationItem = styled.a<NavigationItemProps>`
   &:hover {
     background: ${props => props.theme.colors['black-hover']};
     text-decoration: none;
+  }
+
+  @media (min-width: 510px) {
+    padding: 10px 15px;
+    width: 90px;
+  }
+  
+  @media (min-width: 0px) {
+    padding: 10px;
+    width: 80px;
   }
 `

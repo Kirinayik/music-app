@@ -4,10 +4,14 @@ import SpotifyController from "../../../controllers/spotify";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   switch (req.method) {
     case 'GET':
-      const {nextUrl} = req.query;
+      const {nextUrl, params} = req.query;
 
-      const items = await SpotifyController.nextCall(req, nextUrl + '&include_groups=album,single')
+      if (typeof nextUrl === "string" && typeof params === "string") {
+        const items = await SpotifyController.nextCall(req, nextUrl + `&${params}`)
 
-      return res.status(200).json(items)
+        return res.status(200).json(items)
+      }
+
+      return res.status(500)
   }
 }

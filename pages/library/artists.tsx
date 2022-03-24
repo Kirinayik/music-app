@@ -3,13 +3,18 @@ import {Box, Grid, Typography} from "@mui/material";
 import ArtistController from "../../controllers/artist";
 import ArtistCard from "../../components/Artist/ArtistCard/ArtistCard";
 import {errorHandler} from "../../helpers/errorHandler";
+import {useNextCall} from "../../hooks/useNextCall";
+import LazyCircular from "../../components/assets/LazyCircular";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
+import CursorBasedPagingObject = SpotifyApi.CursorBasedPagingObject;
 
 type ArtistsProps = {
-  artists: ArtistObjectFull[];
+  artists: CursorBasedPagingObject<ArtistObjectFull>;
 }
 
 const Artists:NextPage<ArtistsProps> = ({artists}) => {
+  const {items, fetch, nextUrl} = useNextCall(artists.items, artists.next)
+
   return (
     <Box padding={{xs: '90px 15px 40px', sm: '90px 30px 40px'}}>
       <Box marginBottom={'30px'}>
@@ -17,9 +22,9 @@ const Artists:NextPage<ArtistsProps> = ({artists}) => {
           Artists
         </Typography>
       </Box>
-      {artists.length > 0 ? (
+      {items.length > 0 ? (
         <Grid container spacing={3} columns={{xs: 2, tiny: 4, sm: 6, big: 8, lg: 12}}>
-          {artists.map((artist) => (
+          {artists.items.map((artist) => (
             <ArtistCard artist={artist} key={artist.id}/>
           ))}
         </Grid>
@@ -30,6 +35,7 @@ const Artists:NextPage<ArtistsProps> = ({artists}) => {
           </Typography>
         </Box>
       )}
+      <LazyCircular fetch={fetch} nextUrl={nextUrl}/>
     </Box>
   );
 };
@@ -38,7 +44,7 @@ export default Artists
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
-    const artists = await ArtistController.getArtists(context.req)
+    const {artists} = await ArtistController.getArtists(context.req)
 
     return {
       props: { artists},

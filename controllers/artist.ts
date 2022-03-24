@@ -6,9 +6,9 @@ class ArtistController {
   async getArtists(req:IncomingMessage | undefined) {
     // @ts-ignore
     const {accessToken} = await getSession({req})
-    const {artists: {items}} = await ArtistService.getArtists(accessToken);
+    const artists = await ArtistService.getArtists(accessToken);
 
-    return items
+    return artists
   }
 
   async getArtist(req: IncomingMessage | undefined, id: string | string[] | undefined) {

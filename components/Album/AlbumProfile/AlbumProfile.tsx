@@ -9,7 +9,7 @@ type AlbumProfileProps = {
   album: AlbumObjectFull;
 }
 
-const AlbumProfile:FC<AlbumProfileProps> = ({album: {images, name, release_date,artists,total_tracks, ...album}}) => {
+const AlbumProfile:FC<AlbumProfileProps> = ({album: {images, name, release_date,artists,total_tracks}}) => {
   return (
     <UserContainer>
         {images[0] ? (

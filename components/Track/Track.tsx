@@ -13,7 +13,7 @@ type TrackProps = {
 }
 
 const Track:FC<TrackProps> = ({track:{album, name, artists}, index, type}) => {
-  const image = type === 'album' ? null : album.images[0].url
+  const image = type === 'album' ? null : album.images[0].url;
 
   return (
     <Grid item xs={12}>

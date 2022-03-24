@@ -14,12 +14,28 @@ class Spotify {
   async getPlaylists(req:IncomingMessage | undefined) {
     // @ts-ignore
     const {accessToken} = await getSession({req})
-    const {items} = await SpotifyService.getPlaylists(accessToken);
+    const playlists = await SpotifyService.getPlaylists(accessToken);
 
-    return items
+    return playlists
   }
 
-  async nextCall(req: IncomingMessage | undefined, nextUrl: string | string[]) {
+  async getPlaylist(req: IncomingMessage | undefined, id: string | string[] | undefined) {
+    // @ts-ignore
+    const {accessToken} = await getSession({req})
+    const playlist = await SpotifyService.getPlaylist(accessToken, id);
+
+    return playlist
+  }
+
+  async getSavedTracks(req:IncomingMessage | undefined, limit:number=30) {
+    // @ts-ignore
+    const {accessToken} = await getSession({req})
+    const favourite = await SpotifyService.getSavedTracks(accessToken, limit);
+
+    return favourite
+  }
+
+  async nextCall(req: IncomingMessage | undefined, nextUrl: string) {
     // @ts-ignore
     const {accessToken} = await getSession({req})
     const items = await SpotifyService.nextCall(accessToken, nextUrl);
