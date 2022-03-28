@@ -4,7 +4,7 @@ import Image from 'next/image'
 import {formatName} from "../../../helpers/formatName";
 import {LibraryCardContainer} from "../Library.styles";
 import Link from 'next/link'
-import Logo from '../../../public/img/logo.png'
+import logo from '../../../public/img/logo.png'
 import PlaylistObjectFull = SpotifyApi.PlaylistObjectFull;
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified;
 
@@ -22,10 +22,10 @@ const LibraryCard:FC<LibraryCardProps> = ({playlist:{name, images, description, 
               {images[0]?.url ? (
                 <Image src={images[0].url} width={200} height={200} alt={''}/>
               ) : (
-                <Image src={Logo} width={200} height={200} alt={''}/>
+                <Image src={logo} width={200} height={200} alt={''}/>
               )}
             </Box>
-            <Box marginLeft={'15px'} sx={{flexBasis: '60%'}}>
+            <Box marginLeft={'15px'} sx={{flexBasis: '60%', overflow: 'hidden'}}>
               <Box fontWeight={'700'} fontSize={'16px'} marginBottom={'10px'}>{name}</Box>
               <Box sx={{wordBreak: 'break-all', fontWeight: '300', color: 'rgba(255,255,255, 0.7)'}}>
                 {formatName(description, 150)}

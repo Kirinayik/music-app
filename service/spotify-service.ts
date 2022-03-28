@@ -64,6 +64,18 @@ class SpotifyService extends Token{
       return data
     }
   }
+
+  async search(token: string, query: string, type: string, limit: number) {
+    const {access_token} = await this.getAccessToken(token);
+    const {data} = await axios.get(`https://api.spotify.com/v1/search?q=${encodeURI(query)}&type=${type}&limit=${limit}`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        'Content-Type': 'application/json'
+      },
+    })
+
+    return data
+  }
 }
 
 export default new SpotifyService();

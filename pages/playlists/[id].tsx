@@ -6,6 +6,7 @@ import PlaylistProfile from "../../components/Playlist/PlaylistProfile/PlaylistP
 import {useNextCall} from "../../hooks/useNextCall";
 import Track from "../../components/Track/Track";
 import LazyCircular from "../../components/assets/LazyCircular";
+import InfiniteScroll from "react-infinite-scroll-component";
 import PlaylistObjectFull = SpotifyApi.PlaylistObjectFull;
 
 type PlaylistProps = {
@@ -13,19 +14,20 @@ type PlaylistProps = {
 }
 
 const Playlist:NextPage<PlaylistProps> = ({playlist}) => {
-  const {items, fetch, nextUrl} = useNextCall(playlist.tracks.items, playlist.tracks.next)
+  const {items, fetchMore, nextUrl} = useNextCall(playlist.tracks.items, playlist.tracks.next)
 
   return (
     <Box>
       <PlaylistProfile playlist={playlist}/>
       <Box padding={{xs: '50px 15px 30px', sm: '50px 30px 30px'}}>
-        <Grid container>
-          {items.map((item, i) => (
-              <Track track={item.track} index={i+1} key={item.track.id}/>
-            )
-          )}
-        </Grid>
-        <LazyCircular fetch={fetch} nextUrl={nextUrl}/>
+        <InfiniteScroll next={fetchMore} hasMore={!!nextUrl} loader={<LazyCircular />} dataLength={items.length}>
+          <Grid container>
+            {items.map((item, i) => (
+                <Track track={item.track} index={i+1} key={item.track.id}/>
+              )
+            )}
+          </Grid>
+        </InfiniteScroll>
       </Box>
     </Box>
   );

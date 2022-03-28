@@ -44,22 +44,6 @@ export const TrackIndex = styled.div`
   color: rgba(255,255,255,0.7);
 `
 
-export const TrackPlayContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 5px;
-  color: ${props => props.theme.colors.white};
-
-  @media screen and (min-width: 0px) {
-    display: none;
-  }
-  
-  @media screen and (min-width: 700px) {
-    display: block;
-  }
-`
-
 export const TrackFeaturesContainer = styled(Box)`
   display: flex;
   align-items: center;

@@ -42,6 +42,14 @@ class Spotify {
 
     return items
   }
+
+  async search(req: IncomingMessage | undefined, query: string, type: string = 'track,artist,playlist,album', limit: number = 6) {
+      // @ts-ignore
+      const {accessToken} = await getSession({req})
+      const items = await SpotifyService.search(accessToken, query, type, limit);
+
+      return items
+  }
 }
 
 export default new Spotify();

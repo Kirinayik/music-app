@@ -1,7 +1,6 @@
 import {Grid} from "@mui/material";
 import {FC} from "react";
 import {TrackContainer, TrackIndex, TrackIndexContainer} from "./Track.styles";
-import TrackPlay from "./TrackPlay/TrackPlay";
 import TrackInfo from "./TrackInfo/TrackInfo";
 import TrackFeatures from "./TrackFeature/TrackFeatures";
 import TrackObjectFull = SpotifyApi.TrackObjectFull;
@@ -12,7 +11,7 @@ type TrackProps = {
   type?: string;
 }
 
-const Track:FC<TrackProps> = ({track:{album, name, artists}, index, type}) => {
+const Track:FC<TrackProps> = ({track:{album, name, artists, duration_ms}, index, type}) => {
   const image = type === 'album' ? null : album.images[0].url;
 
   return (
@@ -30,9 +29,8 @@ const Track:FC<TrackProps> = ({track:{album, name, artists}, index, type}) => {
         </Grid>
         {/*@ts-ignore*/}
         <Grid item xs={3} md={6} big={5}>
-          <TrackFeatures album={album?.name} id={album?.id}/>
+          <TrackFeatures album={album?.name} id={album?.id} duration={duration_ms}/>
         </Grid>
-        <TrackPlay/>
       </TrackContainer>
     </Grid>
   );

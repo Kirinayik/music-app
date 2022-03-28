@@ -3,13 +3,14 @@ import {UserAvatar, UserContainer, UserInfoContainer, UserName, UserType} from "
 import {formatName} from "../../../helpers/formatName";
 import {AlbumProfileInfo} from "../Album.styles";
 import {Box} from "@mui/material";
+import SpotifyButton from "../../assets/SpotifyButton";
 import AlbumObjectFull = SpotifyApi.AlbumObjectFull;
 
 type AlbumProfileProps = {
   album: AlbumObjectFull;
 }
 
-const AlbumProfile:FC<AlbumProfileProps> = ({album: {images, name, release_date,artists,total_tracks}}) => {
+const AlbumProfile:FC<AlbumProfileProps> = ({album: {images, name, release_date,artists,total_tracks, external_urls}}) => {
   return (
     <UserContainer>
         {images[0] ? (
@@ -27,6 +28,7 @@ const AlbumProfile:FC<AlbumProfileProps> = ({album: {images, name, release_date,
           <Box component={'li'}>{release_date.split('-')[0]}</Box>
           <Box component={'li'}>{total_tracks} songs</Box>
         </AlbumProfileInfo>
+        {external_urls.spotify && <SpotifyButton externalUrl={external_urls.spotify}/>}
       </UserInfoContainer>
     </UserContainer>
   );

@@ -6,6 +6,7 @@ import {errorHandler} from "../../helpers/errorHandler";
 import FavouriteCard from "../../components/Favourite/FavouriteCard/FavouriteCard";
 import {useNextCall} from "../../hooks/useNextCall";
 import LazyCircular from "../../components/assets/LazyCircular";
+import InfiniteScroll from "react-infinite-scroll-component";
 import ListOfCurrentUsersPlaylistsResponse = SpotifyApi.ListOfCurrentUsersPlaylistsResponse;
 
 type PlaylistsProps = {
@@ -14,7 +15,7 @@ type PlaylistsProps = {
 }
 
 const Playlists:NextPage<PlaylistsProps> = ({playlists, savedTracksLength}) => {
-  const {items, fetch, nextUrl} = useNextCall(playlists.items, playlists.next)
+  const {items, fetchMore, nextUrl} = useNextCall(playlists.items, playlists.next)
 
   return (
     <Box padding={{xs: '90px 15px 40px', sm: '90px 30px 40px'}}>
@@ -24,12 +25,14 @@ const Playlists:NextPage<PlaylistsProps> = ({playlists, savedTracksLength}) => {
         </Typography>
       </Box>
       {items.length > 0 ? (
+        <InfiniteScroll next={fetchMore} hasMore={!!nextUrl} loader={<LazyCircular />} dataLength={items.length}>
         <Grid container spacing={3} columns={{xs: 2, sm: 4, big: 6, xl: 8}}>
           {savedTracksLength > 0 && <FavouriteCard total={savedTracksLength}/>}
           {items.map((playlist) => (
             <LibraryCard playlist={playlist} key={playlist.id}/>
           ))}
         </Grid>
+        </InfiniteScroll>
       ) : (
         <Box display={'flex'} justifyContent={'center'}>
           <Typography fontWeight={'700'} fontSize={{xs: '30px', tiny: '50px'}}>
@@ -37,7 +40,6 @@ const Playlists:NextPage<PlaylistsProps> = ({playlists, savedTracksLength}) => {
           </Typography>
         </Box>
       )}
-      <LazyCircular fetch={fetch} nextUrl={nextUrl}/>
     </Box>
   );
 };

@@ -17,7 +17,7 @@ const HistoryButton:FC<HistoryButtonProps> = ({type}) => {
   switch (type) {
     case 'prev':
       return (
-        <NavigationButton sx={{marginRight: '20px'}} disabled={prev < 2} disableRipple onClick={ handlePrevPage}>
+        <NavigationButton sx={{marginRight: {tiny: '20px'}}} disabled={prev < 2} disableRipple onClick={ handlePrevPage}>
           <ArrowBackIosNewIcon/>
         </NavigationButton>
       )

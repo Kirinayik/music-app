@@ -5,6 +5,7 @@ import ArtistAlbums from "../../../components/Artist/ArtistAlbums/ArtistAlbums";
 import ArtistController from "../../../controllers/artist";
 import {useNextCall} from "../../../hooks/useNextCall";
 import LazyCircular from "../../../components/assets/LazyCircular";
+import InfiniteScroll from "react-infinite-scroll-component";
 import ArtistsAlbumsResponse = SpotifyApi.ArtistsAlbumsResponse;
 
 type ArtistProps = {
@@ -12,12 +13,13 @@ type ArtistProps = {
 }
 
 const Albums:NextPage<ArtistProps> = ({albums}) => {
-  const {items, fetch, nextUrl} = useNextCall(albums.items, albums.next, 'include_groups=album,single')
+  const {fetchMore, nextUrl, items} = useNextCall(albums.items, albums.next, 'include_groups=album,single')
 
   return (
     <Box padding={{xs: '90px 0 30px', sm: '90px 0 30px'}}>
-      <ArtistAlbums albums={items} />
-      <LazyCircular fetch={fetch} nextUrl={nextUrl}/>
+      <InfiniteScroll next={fetchMore} hasMore={!!nextUrl} loader={<LazyCircular />} dataLength={items.length}>
+        <ArtistAlbums albums={items} />
+      </InfiniteScroll>
     </Box>
   );
 };

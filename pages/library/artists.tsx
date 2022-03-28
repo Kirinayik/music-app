@@ -5,6 +5,7 @@ import ArtistCard from "../../components/Artist/ArtistCard/ArtistCard";
 import {errorHandler} from "../../helpers/errorHandler";
 import {useNextCall} from "../../hooks/useNextCall";
 import LazyCircular from "../../components/assets/LazyCircular";
+import InfiniteScroll from "react-infinite-scroll-component";
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 import CursorBasedPagingObject = SpotifyApi.CursorBasedPagingObject;
 
@@ -13,7 +14,7 @@ type ArtistsProps = {
 }
 
 const Artists:NextPage<ArtistsProps> = ({artists}) => {
-  const {items, fetch, nextUrl} = useNextCall(artists.items, artists.next)
+  const {items, fetchMore, nextUrl} = useNextCall(artists.items, artists.next)
 
   return (
     <Box padding={{xs: '90px 15px 40px', sm: '90px 30px 40px'}}>
@@ -23,11 +24,13 @@ const Artists:NextPage<ArtistsProps> = ({artists}) => {
         </Typography>
       </Box>
       {items.length > 0 ? (
+        <InfiniteScroll next={fetchMore} hasMore={!!nextUrl} loader={<LazyCircular />} dataLength={items.length}>
         <Grid container spacing={3} columns={{xs: 2, tiny: 4, sm: 6, big: 8, lg: 12}}>
-          {artists.items.map((artist) => (
-            <ArtistCard artist={artist} key={artist.id}/>
-          ))}
+              {items.map((artist) => (
+                <ArtistCard artist={artist} key={artist.id}/>
+              ))}
         </Grid>
+        </InfiniteScroll>
       ) : (
         <Box display={'flex'} justifyContent={'center'}>
           <Typography fontWeight={'700'} fontSize={{xs: '30px', tiny: '50px'}}>
@@ -35,7 +38,6 @@ const Artists:NextPage<ArtistsProps> = ({artists}) => {
           </Typography>
         </Box>
       )}
-      <LazyCircular fetch={fetch} nextUrl={nextUrl}/>
     </Box>
   );
 };

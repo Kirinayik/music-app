@@ -5,6 +5,7 @@ import NavigationProfile from "./NavigationProfile/NavigationProfile";
 import NavigationFeature from "./NavigationFeature/NavigationFeature";
 import {useRouter} from "next/router";
 import {useNavColor} from "../../hooks/useNavColor";
+import SearchBar from "../Search/SearchBar/SearchBar";
 
 const Navigation = () => {
   const router = useRouter().pathname.split('/')
@@ -18,6 +19,7 @@ const Navigation = () => {
           <HistoryButton type={'next'}/>
         </Stack>
         {!!router.find(el => el === 'library') && <NavigationFeature/>}
+        {!!router.find(el => el === 'search') && <SearchBar/>}
       </Box>
       <NavigationProfile/>
     </NavigationContainer>

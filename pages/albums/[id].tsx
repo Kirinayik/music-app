@@ -6,6 +6,7 @@ import Track from "../../components/Track/Track";
 import {errorHandler} from "../../helpers/errorHandler";
 import {useNextCall} from "../../hooks/useNextCall";
 import LazyCircular from "../../components/assets/LazyCircular";
+import InfiniteScroll from 'react-infinite-scroll-component'
 import AlbumObjectFull = SpotifyApi.AlbumObjectFull;
 
 type AlbumProps = {
@@ -13,19 +14,19 @@ type AlbumProps = {
 }
 
 const Album: NextPage<AlbumProps> = ({album}) => {
-  const {items:tracks, fetch, nextUrl} = useNextCall(album.tracks.items, album.tracks.next);
+  const {fetchMore, nextUrl, items} = useNextCall(album.tracks.items, album.tracks.next)
 
   return (
     <Box >
       <AlbumProfile album={album}/>
       <Box padding={{xs: '50px 15px 30px', sm: '50px 30px 30px'}}>
+        <InfiniteScroll next={fetchMore} hasMore={!!nextUrl} loader={<LazyCircular />} dataLength={items.length}>
         <Grid container>
-          {tracks.map((track, i) => (
+            {items.map((track, i) => (
               <Track track={track} index={i+1} key={track.id} type={'album'}/>
-            )
-          )}
+            ))}
         </Grid>
-        <LazyCircular fetch={fetch} nextUrl={nextUrl}/>
+        </InfiniteScroll>
       </Box>
     </Box>
   )
