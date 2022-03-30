@@ -43,12 +43,28 @@ class Spotify {
     return items
   }
 
-  async search(req: IncomingMessage | undefined, query: string, type: string = 'track,artist,playlist,album', limit: number = 6) {
+  async search(req: IncomingMessage | undefined, query: string | string[] | undefined, type: string = 'track,artist,playlist,album', limit: number = 6) {
       // @ts-ignore
       const {accessToken} = await getSession({req})
       const items = await SpotifyService.search(accessToken, query, type, limit);
 
       return items
+  }
+
+  async newRelease(req: IncomingMessage | undefined, limit:number = 6) {
+    // @ts-ignore
+    const {accessToken} = await getSession({req})
+    const items = await SpotifyService.newRelease(accessToken, limit);
+
+    return items
+  }
+
+  async featuredPlaylists(req: IncomingMessage | undefined, limit:number = 6) {
+    // @ts-ignore
+    const {accessToken} = await getSession({req})
+    const items = await SpotifyService.featuredPlaylists(accessToken, limit);
+
+    return items
   }
 }
 
