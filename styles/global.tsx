@@ -75,6 +75,10 @@ export const GlobalStyles = () => (
       ul {
       margin: 0;
       }
+      
+      .rhap_time, .rhap_main-controls-button, .rhap_button-clear, .rhap_volume-button {
+        color: #fff !important;
+      }
     `}
   />
 )

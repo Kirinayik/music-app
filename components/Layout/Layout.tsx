@@ -5,6 +5,7 @@ import Loader from "../assets/Loader";
 import Navigation from "../Navigation/Navigation";
 import {LayoutContainer} from "./Layout.styles";
 import {useAppSelector} from "../../store";
+import Player from "../Player/Player";
 
 type LayoutProps = {
   children: ReactNode
@@ -32,11 +33,12 @@ const Layout:FC<LayoutProps> = ({ children }) => {
       <LayoutContainer
         component={'main'}
            padding={{
-             xs: router.pathname !== '/login' ? '0 0 70px' : '0',
-             sm: router.pathname !== '/login' ? '0 0 0 70px' : '0'
+             xs: router.pathname !== '/login' ? '0 0 140px' : '0',
+             sm: router.pathname !== '/login' ? '0 0 90px 70px' : '0'
            }}>
         {(loading || isFetching) && <Loader/>}
         {router.pathname !== '/login' && <Navigation/>}
+        {router.pathname !== '/login' && <Player/>}
         {children}
       </LayoutContainer>
     </>

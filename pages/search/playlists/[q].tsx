@@ -28,7 +28,7 @@ const Playlists:NextPage<PlaylistsProps> = ({playlists}) => {
       <InfiniteScroll next={fetchMore} hasMore={!!nextUrl} loader={<LazyCircular />} dataLength={items.length}>
         <Grid container spacing={3} columns={{xs: 2, sm: 4, big: 6, xl: 8}}>
           {items.map(playlist => (
-              <LibraryCard playlist={playlist}/>
+              <LibraryCard playlist={playlist} key={playlist.id}/>
             )
           )}
         </Grid>

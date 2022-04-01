@@ -3,15 +3,19 @@ import {Box} from "@mui/material";
 import Link from "next/link";
 import {TrackArtist, TrackName} from "../Track.styles";
 import {FC} from "react";
+import {useAppSelector} from "../../../store";
 
 type TrackInfoProps = {
   image: string | null;
   name: string;
   artist: string;
-  id: string;
+  artistId: string;
+  trackId: string;
 }
 
-const TrackInfo:FC<TrackInfoProps> = ({image, name, artist, id}) => {
+const TrackInfo:FC<TrackInfoProps> = ({image, name, artist, artistId, trackId}) => {
+  const {id:playerId} = useAppSelector(state => state.player)
+
   return (
     <Box display={'flex'} alignItems={'center'} height={'100%'}
     >
@@ -21,9 +25,11 @@ const TrackInfo:FC<TrackInfoProps> = ({image, name, artist, id}) => {
         </Box>
       )}
       <Box marginLeft={image ? {xs: '10px', tiny: '15px'} : '0'} sx={{overflow: 'hidden'}}>
-        <TrackName>{name}</TrackName>
-          <Link href={`/artists/${id}`} passHref>
-            <TrackArtist>{artist}</TrackArtist>
+        <TrackName isPlaying={playerId === trackId}>{name}</TrackName>
+          <Link href={`/artists/${artistId}`} passHref>
+            <TrackArtist>
+              {artist}
+            </TrackArtist>
           </Link>
       </Box>
     </Box>

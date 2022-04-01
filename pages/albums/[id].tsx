@@ -23,7 +23,7 @@ const Album: NextPage<AlbumProps> = ({album}) => {
         <InfiniteScroll next={fetchMore} hasMore={!!nextUrl} loader={<LazyCircular />} dataLength={items.length}>
         <Grid container>
             {items.map((track, i) => (
-              <Track track={track} index={i+1} key={track.id} type={'album'}/>
+              <Track track={track} index={i+1} key={track.id} type={'album'} albumImage={album.images[0].url}/>
             ))}
         </Grid>
         </InfiniteScroll>

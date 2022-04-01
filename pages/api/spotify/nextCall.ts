@@ -24,6 +24,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       } catch (e) {
         errorHandler(e)
       }
-
   }
 }

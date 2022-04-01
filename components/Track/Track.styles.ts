@@ -1,15 +1,24 @@
 import styled from "@emotion/styled";
 import {Box, Grid} from "@mui/material";
 
+type TrackProps = {
+  isPlaying: boolean;
+}
+
 export const TrackContainer = styled(Grid)`
   position: relative;
   height: 70px;
   width: 100%;
   background: transparent;
   border-radius: 8px;
+  cursor: pointer;
   
   &:hover {
     background-color: ${props => props.theme.colors['black-hover']};
+    
+    & div {
+      visibility: visible;
+    }
   }
   
   @media (min-width: 0px) {
@@ -38,10 +47,10 @@ export const TrackIndexContainer = styled.div`
     display: flex;
   }
 `
-export const TrackIndex = styled.div`
+export const TrackIndex = styled.div<TrackProps>`
   font-size: 16px;
   font-weight: 300;
-  color: rgba(255,255,255,0.7);
+  color: ${props => props.isPlaying ? props.theme.colors.green : 'rgba(255,255,255,0.7)'}
 `
 
 export const TrackFeaturesContainer = styled(Box)`
@@ -66,11 +75,12 @@ export const FeaturesContainer = styled(Box)`
   color: ${props => props.theme.colors.green};
 `
 
-export const TrackName = styled.div`
+export const TrackName = styled.div<TrackProps>`
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: ${props => props.isPlaying ? props.theme.colors.green : 'inherit'}
 `
 
 export const TrackArtist = styled.a`
