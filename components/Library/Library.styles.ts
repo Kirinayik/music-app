@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const LibraryCardContainer = styled.a`
   display: block;
-  background: rgb(38,38,38);
+  background: rgb(38, 38, 38);
   cursor: pointer;
   transition: 0.2s background ease-in-out;
   border-radius: 8px;
@@ -10,7 +10,7 @@ export const LibraryCardContainer = styled.a`
   height: 100%;
 
   &:hover {
-    background: ${props => props.theme.colors['black-hover']};
+    background: ${(props) => props.theme.colors["black-hover"]};
     text-decoration: none;
   }
-`
+`;

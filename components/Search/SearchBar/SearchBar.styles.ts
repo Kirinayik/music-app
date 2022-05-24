@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 type SearchIconProps = {
   position: string;
-}
+};
 
 export const SearchBarContainer = styled.div`
   background: #fff;
@@ -18,7 +18,7 @@ export const SearchBarContainer = styled.div`
   @media (min-width: 770px) {
     width: 300px;
   }
-`
+`;
 
 export const SearchInput = styled.input`
   border: none;
@@ -26,14 +26,14 @@ export const SearchInput = styled.input`
   width: 100%;
   height: 100%;
   padding: 0 40px;
-`
+`;
 
 export const SearchIconContainer = styled.div<SearchIconProps>`
   position: absolute;
   top: 0;
-  color: ${props => props.theme.colors.black};
-  ${props => props.position}: 0;
-  
+  color: ${(props) => props.theme.colors.black};
+  ${(props) => props.position}: 0;
+
   & > div {
     display: flex;
     justify-content: center;
@@ -41,4 +41,4 @@ export const SearchIconContainer = styled.div<SearchIconProps>`
     width: 30px;
     height: 40px;
   }
-`
+`;

@@ -5,9 +5,9 @@ export const TopTitleContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-`
+`;
 
 export const TopLink = styled.a`
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-`
+  color: rgba(255, 255, 255, 0.5);
+`;

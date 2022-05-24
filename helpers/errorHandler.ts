@@ -1,27 +1,28 @@
-export const errorHandler = (error:any) => {
+export const errorHandler = (error: any) => {
+  console.log(error);
   const status = error.status;
 
   switch (status) {
-    case '404':
+    case "404":
       return {
         redirect: {
-          destination: '/404',
+          destination: "/404",
           permanent: false,
-        }
-      }
-    case '401':
+        },
+      };
+    case "401":
       return {
         redirect: {
-          destination: '/login',
+          destination: "/login",
           permanent: false,
-        }
-      }
+        },
+      };
     default:
       return {
         redirect: {
-          destination: '/500',
+          destination: "/500",
           permanent: false,
-        }
-      }
+        },
+      };
   }
-}
+};

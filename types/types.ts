@@ -1,12 +1,12 @@
-import {store} from "../store";
+import { store } from "../store";
 import "@emotion/react";
 
 declare module "@emotion/react" {
   export interface Theme {
     colors: {
       black: string;
-      'black-hover': string;
-      'black-highlight': string;
+      "black-hover": string;
+      "black-highlight": string;
       green: string;
       white: string;
       grey: string;
@@ -15,11 +15,12 @@ declare module "@emotion/react" {
 }
 
 declare module "@mui/material" {
+  // eslint-disable-next-line no-unused-vars
   interface BreakpointOverrides {
     tiny: true;
     big: true;
   }
 }
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

@@ -1,15 +1,15 @@
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 export const useNavigate = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleToProfile = () => {
-    return router.push('/profile')
-  }
+    return router.push("/profile");
+  };
 
   const handleToHome = () => {
-    return router.replace('/')
-  }
+    return router.replace("/");
+  };
 
-  return {handleToProfile, handleToHome};
+  return { handleToProfile, handleToHome };
 };

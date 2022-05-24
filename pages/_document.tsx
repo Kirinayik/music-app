@@ -1,4 +1,4 @@
-import {Head, Html, Main, NextScript} from 'next/document'
+import { Head, Html, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
@@ -8,51 +8,22 @@ export default function Document() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
-        <link
-          href="/fonts/CircularStd-Bold.ttf"
-          rel="stylesheet"
-        />
-        <link
-          rel={'stylesheet'}
-          href="/fonts/CircularStd-Bold.ttf"
-        />
-        <link
-          rel={'stylesheet'}
-          href="/fonts/CircularStd-Bold.woff"
-        />
-        <link
-          rel={'stylesheet'}
-          href="/fonts/CircularStd-Bold.woff2"
-        />
-        <link
-          rel={'stylesheet'}
-          href="/fonts/CircularStd-Book.ttf"
-        />
-        <link
-          rel={'stylesheet'}
-          href="/fonts/CircularStd-Book.woff"
-        />
-        <link
-          rel={'stylesheet'}
-          href="/fonts/CircularStd-Book.woff2"
-        />
-        <link
-          rel={'stylesheet'}
-          href="/fonts/CircularStd-Medium.ttf"
-        />
-        <link
-          rel={'stylesheet'}
-          href="/fonts/CircularStd-Medium.woff"
-        />
-        <link
-          rel={'stylesheet'}
-          href="/fonts/CircularStd-Medium.woff2"
-        />
+        <link href="/fonts/CircularStd-Bold.ttf" rel="stylesheet" />
+        <link rel={"stylesheet"} href="/fonts/CircularStd-Bold.ttf" />
+        <link rel={"stylesheet"} href="/fonts/CircularStd-Bold.woff" />
+        <link rel={"stylesheet"} href="/fonts/CircularStd-Bold.woff2" />
+        <link rel={"stylesheet"} href="/fonts/CircularStd-Book.ttf" />
+        <link rel={"stylesheet"} href="/fonts/CircularStd-Book.woff" />
+        <link rel={"stylesheet"} href="/fonts/CircularStd-Book.woff2" />
+        <link rel={"stylesheet"} href="/fonts/CircularStd-Medium.ttf" />
+        <link rel={"stylesheet"} href="/fonts/CircularStd-Medium.woff" />
+        <link rel={"stylesheet"} href="/fonts/CircularStd-Medium.woff2" />
+        <title>Music app</title>
       </Head>
       <body>
-      <Main />
-      <NextScript />
+        <Main />
+        <NextScript />
       </body>
     </Html>
-  )
+  );
 }

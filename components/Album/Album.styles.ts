@@ -10,7 +10,7 @@ export const AlbumProfileInfo = styled.ul`
     margin: 0 15px 0 0;
     list-style-type: none;
   }
-  
+
   & > li {
     margin: 0 15px;
   }
@@ -18,8 +18,8 @@ export const AlbumProfileInfo = styled.ul`
   @media (min-width: 0px) {
     justify-content: center;
   }
-  
+
   @media (min-width: 510px) {
     justify-content: flex-start;
   }
-`
+`;

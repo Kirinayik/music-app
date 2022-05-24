@@ -1,13 +1,13 @@
-import {signIn, signOut} from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 
 export const useAuth = () => {
   const handleSignIn = () => {
-    return signIn('spotify')
-  }
+    return signIn("spotify");
+  };
 
   const handleSignOut = () => {
-    return signOut()
-  }
+    return signOut();
+  };
 
-  return {handleSignIn, handleSignOut}
-}
+  return { handleSignIn, handleSignOut };
+};

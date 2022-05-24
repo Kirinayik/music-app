@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import PagingObject = SpotifyApi.PagingObject;
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 import AlbumObjectSimplified = SpotifyApi.AlbumObjectSimplified;
@@ -11,34 +11,35 @@ type ISearch = {
   playlists: PagingObject<PlaylistObjectSimplified> | null;
   tracks: PagingObject<TrackObjectFull> | null;
   searchQuery: string;
-}
+};
 
-const initialState:ISearch = {
+const initialState: ISearch = {
   albums: null,
   artists: null,
   playlists: null,
   tracks: null,
-  searchQuery: '',
-}
+  searchQuery: "",
+};
 
 const searchSlice = createSlice({
-  name: 'search',
+  name: "search",
   initialState,
   reducers: {
-    setSearch: (state, action:PayloadAction<ISearch>) => {
-      const {albums, artists, playlists, tracks, searchQuery} = action.payload
+    setSearch: (state, action: PayloadAction<ISearch>) => {
+      const { albums, artists, playlists, tracks, searchQuery } =
+        action.payload;
 
-      state.albums = albums
-      state.artists = artists
-      state.playlists = playlists
-      state.tracks = tracks
-      state.searchQuery = searchQuery
+      state.albums = albums;
+      state.artists = artists;
+      state.playlists = playlists;
+      state.tracks = tracks;
+      state.searchQuery = searchQuery;
     },
-    setSearchQuery: (state, action:PayloadAction<string>) => {
-      state.searchQuery = action.payload
-    }
-  }
-})
+    setSearchQuery: (state, action: PayloadAction<string>) => {
+      state.searchQuery = action.payload;
+    },
+  },
+});
 
-export const {setSearch, setSearchQuery} = searchSlice.actions;
+export const { setSearch, setSearchQuery } = searchSlice.actions;
 export default searchSlice.reducer;

@@ -9,7 +9,7 @@ export const PlayerContainer = styled.div`
   border-top: 1px solid #282828;
   z-index: 1301;
   height: 90px;
-  
+
   @media (min-width: 0) {
     bottom: 69px;
   }
@@ -17,4 +17,4 @@ export const PlayerContainer = styled.div`
   @media (min-width: 700px) {
     bottom: 0;
   }
-`
+`;

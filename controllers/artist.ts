@@ -1,38 +1,48 @@
-import {IncomingMessage} from "http";
-import {getSession} from "next-auth/react";
+import { IncomingMessage } from "http";
+import { getSession } from "next-auth/react";
 import ArtistService from "../service/artist-service";
 
 class ArtistController {
-  async getArtists(req:IncomingMessage | undefined) {
+  async getArtists(req: IncomingMessage | undefined) {
     // @ts-ignore
-    const {accessToken} = await getSession({req})
+    const { accessToken } = await getSession({ req });
     const artists = await ArtistService.getArtists(accessToken);
 
-    return artists
+    return artists;
   }
 
-  async getArtist(req: IncomingMessage | undefined, id: string | string[] | undefined) {
+  async getArtist(
+    req: IncomingMessage | undefined,
+    id: string | string[] | undefined
+  ) {
     // @ts-ignore
-    const {accessToken} = await getSession({req})
+    const { accessToken } = await getSession({ req });
     const artist = await ArtistService.getArtist(accessToken, id);
 
-    return artist
+    return artist;
   }
 
-  async getTopArtistTracks(req: IncomingMessage | undefined, id: string | string[] | undefined) {
+  async getTopArtistTracks(
+    req: IncomingMessage | undefined,
+    id: string | string[] | undefined
+  ) {
     // @ts-ignore
-    const {accessToken} = await getSession({req})
-    const {tracks} = await ArtistService.getTopArtistTracks(accessToken, id);
+    const { accessToken } = await getSession({ req });
+    const { tracks } = await ArtistService.getTopArtistTracks(accessToken, id);
 
-    return tracks
+    return tracks;
   }
 
-  async getArtistAlbums(req: IncomingMessage | undefined, id: string | string[] | undefined, limit:number = 6) {
+  async getArtistAlbums(
+    req: IncomingMessage | undefined,
+    id: string | string[] | undefined,
+    limit: number = 6
+  ) {
     // @ts-ignore
-    const {accessToken} = await getSession({req})
+    const { accessToken } = await getSession({ req });
     const albums = await ArtistService.getArtistAlbums(accessToken, id, limit);
 
-    return albums
+    return albums;
   }
 }
 

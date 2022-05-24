@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {Avatar} from "@mui/material";
+import { Avatar } from "@mui/material";
 
 export const UserAvatar = styled(Avatar)`
   box-shadow: 0px 5px 30px 6px rgba(34, 60, 80, 0.35);
@@ -18,12 +18,16 @@ export const UserAvatar = styled(Avatar)`
     width: 250px;
     height: 250px;
   }
-`
+`;
 
 export const UserContainer = styled.div`
   display: flex;
   align-items: flex-end;
-  background: linear-gradient(180deg, rgba(72,72,72,1) 0%, rgba(28,28,28,1) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(72, 72, 72, 1) 0%,
+    rgba(28, 28, 28, 1) 100%
+  );
 
   @media (min-width: 0px) {
     padding: 90px 15px 40px;
@@ -35,16 +39,16 @@ export const UserContainer = styled.div`
     flex-direction: row;
     align-items: flex-end;
   }
-  
+
   @media (min-width: 700px) {
     padding: 90px 30px 40px;
   }
-`
+`;
 
 export const UserInfoContainer = styled.div`
   font-weight: 700;
   overflow: hidden;
-  
+
   @media (min-width: 0px) {
     margin: 15px 0 0;
   }
@@ -52,11 +56,11 @@ export const UserInfoContainer = styled.div`
   @media (min-width: 510px) {
     margin: 0 0 0 15px;
   }
-  
+
   @media (min-width: 700px) {
     margin: 0 0 0 30px;
   }
-`
+`;
 
 export const UserName = styled.h2`
   margin-bottom: 15px;
@@ -69,7 +73,7 @@ export const UserName = styled.h2`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  
+
   @media (min-width: 0px) {
     font-size: 38px;
     text-align: center;
@@ -83,11 +87,11 @@ export const UserName = styled.h2`
   @media (min-width: 700px) {
     font-size: 68px;
   }
-  
+
   @media (min-width: 1100px) {
     font-size: 96px;
   }
-`
+`;
 
 export const UserType = styled.div`
   text-transform: uppercase;
@@ -98,14 +102,14 @@ export const UserType = styled.div`
   }
 
   @media (min-width: 510px) {
-   display: block;
+    display: block;
   }
-`
+`;
 
 export const UserSubtitle = styled.div`
   margin-top: 15px;
   font-weight: 700;
-  
+
   @media (min-width: 0px) {
     text-align: center;
   }
@@ -113,4 +117,4 @@ export const UserSubtitle = styled.div`
   @media (min-width: 510px) {
     text-align: left;
   }
-`
+`;

@@ -1,19 +1,19 @@
-import {TopLink, TopTitleContainer} from "../../Top/Top.styles";
-import {Title} from "../../../styles/global";
+import { TopLink, TopTitleContainer } from "../../Top/Top.styles";
+import { Title } from "../../../styles/global";
 import Link from "next/link";
-import {Box, Grid} from "@mui/material";
-import {FC} from "react";
+import { Box, Grid } from "@mui/material";
+import { FC } from "react";
 import Track from "../../Track/Track";
-import {useAppSelector} from "../../../store";
+import { useAppSelector } from "../../../store";
 import PagingObject = SpotifyApi.PagingObject;
 import TrackObjectFull = SpotifyApi.TrackObjectFull;
 
 type SearchTracksProps = {
   tracks: PagingObject<TrackObjectFull> | null;
-}
+};
 
-const SearchTracks:FC<SearchTracksProps> = ({tracks}) => {
-  const {searchQuery} = useAppSelector(state => state.search)
+const SearchTracks: FC<SearchTracksProps> = ({ tracks }) => {
+  const { searchQuery } = useAppSelector((state) => state.search);
 
   return (
     <Box>
@@ -24,13 +24,13 @@ const SearchTracks:FC<SearchTracksProps> = ({tracks}) => {
         </Link>
       </TopTitleContainer>
       <Grid container rowSpacing={2}>
-        {tracks && tracks.items.map((track, i) => (
-            <Track track={track} key={track.id} index={i+1}/>
-          )
-        )}
+        {tracks &&
+          tracks.items.map((track, i) => (
+            <Track track={track} key={track.id} index={i + 1} />
+          ))}
       </Grid>
     </Box>
   );
 };
 
-export default SearchTracks
+export default SearchTracks;
